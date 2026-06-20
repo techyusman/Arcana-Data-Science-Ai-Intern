@@ -1,4 +1,4 @@
-userinput = 'random'
+userinput = 0
 data=[]
 
 
@@ -13,6 +13,7 @@ while userinput != 4:
     showmenu()
     
     userinput = int(input("Enter your choice: "))
+    
     if userinput ==1:
         task = input("What you want to add in your to-do list?")
         data.append(task)
@@ -20,6 +21,7 @@ while userinput != 4:
 
     elif userinput == 2:
         task = input("Enter task to mark as done :")
+
         for task in data :
             data.remove(task)
             print("task removed ",task, " successfully")
