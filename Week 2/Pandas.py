@@ -5,14 +5,14 @@ import pandas as pd
 # ==========================================
 print("--- Creating DataStructures ---")
 # 1. Series (1D Data - like a column in an Excel sheet)
-names_series = pd.Series(["Alice", "Bob", "Charlie", "David"])
+names_series = pd.Series(["M.Usman", "Ali", "Umed", "Qadeer"])
 print("Series:\n", names_series, "\n")
 
 # 2. DataFrame (2D Data - like an entire Excel sheet or SQL table)
 data = {
-    "Name": ["Alice", "Bob", "Charlie", "David"],
+    "Name": ["M.Usman", "Ali", "Qadeer", "Umed"],
     "Age": [25, 30, 35, 40],
-    "City": ["New York", "London", "Paris", "Tokyo"]
+    "City": ["Karachi", "Lahore", "Islamabad", "Quetta"]
 }
 df = pd.DataFrame(data)
 print("DataFrame:\n", df, "\n")
