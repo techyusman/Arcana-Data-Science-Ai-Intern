@@ -10,9 +10,6 @@ import numpy as np
 
 
 
-
-
-
 # ==========================================
 # 1. Basic Line Plot
 # ==========================================
@@ -47,7 +44,6 @@ plt.legend()
 # Display the plot on the screen.
 # Execution will pause here until the plot window is closed.
 plt.show()
-
 
 
 
@@ -94,6 +90,8 @@ plt.show()
 
 
 
+
+
 # ==========================================
 # 3. Bar Chart
 # ==========================================
@@ -120,8 +118,6 @@ plt.ylabel("Values")
 
 # Display the bar chart.
 plt.show()
-
-
 
 
 
