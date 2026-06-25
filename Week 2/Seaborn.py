@@ -49,5 +49,19 @@ print(Data['island'].value_counts())
 
 #box plot, it help us to identify the outlier in the data
 
-sns.boxplot(Data, x="species", y = "body_mass_g", hue = "sex")
+#sns.boxplot(Data, x="species", y = "body_mass_g", hue = "sex")
+
+
+# KDE - For estimating the propability density function of continous. 
+# Or in simple terms : a smooth curve that shows the distribution of data. 
+# it helps you see where the data is peaks and how it spreads
+
+#sns.kdeplot(Data, x= "body_mass_g", hue = "sex", fill=True)
+
+#Heatmap : a 2d color- coded matrix that shows the relationships or patterns b/w two variables
+# shows the correlations b/w features mainly usend in numarical values
+
+columns = ["bill_length_mm", "bill_depth_mm","flipper_length_mm", "body_mass_g"]
+
+sns.heatmap(Data[columns].corr() , annot=True)
 plt.show()
