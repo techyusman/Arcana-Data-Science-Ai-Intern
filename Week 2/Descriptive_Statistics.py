@@ -32,11 +32,11 @@ print()
 # You can calculate individual statistics separately if you need specific metrics.
 
 print("--- Individual Descriptive Functions ---")
-print("Mean of Age:             {df['Age'].mean()}")             # Average
-print("Median of Salary:        {df['Salary'].median()}")        # Middle value
-print("Mode of Department:      {df['Department'].mode()[0]}")       # Most frequent value
-print("Standard Deviation:      {df['Salary'].std()}")           # Measure of spread
-print("Variance:                {df['Salary'].var()}")           # Variance
-print("Minimum Age:             {df['Age'].min()}")              # Smallest value
+print("Mean of Age:             ",df['Age'].mean())             # Average
+print("Median of Salary:        ",df['Salary'].median())        # Middle value
+print("Mode of Department:      ",df['Department'].mode()[0])       # Most frequent value
+print("Standard Deviation:      ",df['Salary'].std())           # Measure of spread
+print("Variance:                ",df['Salary'].var())           # Variance
+print("Minimum Age:             ",df['Age'].min())              # Smallest value
 print("Maximum Salary:        ", df['Salary'].max())           # Largest value
 print("Total Count (Age):   " , df['Age'].count())                # Number of non-null observations
