@@ -6,4 +6,4 @@ emp_salary_in_thousands = np.array([[120, 150, 250],
 
 bonus = np.array([5, 10, 15])
 
-print("Salaries after bonus (in thousands): ", emp_salary_in_thousands + bonus)
+print("Salaries after bonus in thousands: ", emp_salary_in_thousands + bonus)
