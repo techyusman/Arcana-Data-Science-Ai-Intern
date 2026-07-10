@@ -7,9 +7,6 @@ Phase 1: Data Understanding & Preparation
 This script handles Phase 1 of the project:
 1. Load and examine the banking dataset
 2. Clean and preprocess the data
-3. Perform Exploratory Data Analysis (EDA)
-4. Integrate external features (holidays, weekends, etc.)
-5. Generate clean, analysis-ready dataset
 
 Author: Muhammad Usman
 Status: Phase 1 Implementation
@@ -19,740 +16,515 @@ Status: Phase 1 Implementation
 # =============================================================================
 # STEP 1: IMPORT REQUIRED LIBRARIES
 # =============================================================================
-# Libraries are like toolboxes - each provides different tools for data analysis
 
-import pandas as pd  # For data manipulation and analysis (like Excel for Python)
-import numpy as np  # For numerical calculations and arrays
-import matplotlib
-matplotlib.use('Agg')  # Non-interactive backend (saves plots without opening windows)
-import matplotlib.pyplot as plt  # For creating visual charts and graphs
-import seaborn as sns  # For making beautiful statistical plots
-from datetime import datetime, timedelta  # For working with dates and times
-import warnings  # To handle warning messages
-import sys  # For system-level settings
-warnings.filterwarnings('ignore')  # Hide unimportant warning messages
-sys.stdout.reconfigure(encoding='utf-8')  # Fix Unicode display on Windows
+import pandas as pd    # For data manipulation (DataFrames, Series, reading files)
+import numpy as np     # For numerical operations (arrays, math)
+import warnings        # To suppress unimportant warnings
+import sys             # For system-level settings
+
+warnings.filterwarnings('ignore')
+sys.stdout.reconfigure(encoding='utf-8')
+
 
 # =============================================================================
-# STEP 2: CONFIGURATION SETTINGS
+# STEP 2: CONFIGURATION
 # =============================================================================
-# These settings help us customize our analysis
 
-# Set plotting style for better-looking charts
-plt.style.use('seaborn-v0_8-darkgrid')
-sns.set_palette("husl")
+# File paths
+DATASET_PATH = "Bank DataSet/Bank Cash Optimization.xlsx"
+OUTPUT_PATH = "Bank DataSet/cleaned_bank_data.csv"
 
-# Define file paths (where our data is stored)
-DATASET_PATH = "../Bank DataSet/Bank Cash Optimization.xlsx"  # Input data file
-OUTPUT_PATH = "../Bank DataSet/cleaned_bank_data.csv"  # Where we'll save clean data
 
 # =============================================================================
-# STEP 3: LOAD THE DATASET
+# TASK 1: LOAD AND EXAMINE THE BANKING DATASET
 # =============================================================================
+
+# ---- 1.1 Load the Dataset ----
 
 def load_dataset(file_path):
     """
-    This function loads the Excel file into a pandas DataFrame.
-    DataFrame is like a table in Python - it has rows and columns.
-    
+    Load the Excel file into a pandas DataFrame.
+    Reads all sheets and uses the first one.
+
     Parameters:
         file_path (str): Path to the Excel file
-        
+
     Returns:
-        DataFrame: The loaded data
+        DataFrame or None: The loaded data, or None if loading fails
     """
-    print("="*70)
-    print("STEP 1: LOADING DATASET")
-    print("="*70)
-    
+    print("=" * 70)
+    print("TASK 1.1: LOADING DATASET")
+    print("=" * 70)
+
     try:
-        # Read Excel file - we'll try different sheets if needed
-        df = pd.read_excel(file_path, sheet_name=None)  # Read all sheets
-        
-        # If multiple sheets exist, combine them or use the first one
+        # Read all sheets from the Excel file
+        df = pd.read_excel(file_path, sheet_name=None)
+
+        # If multiple sheets exist, show them and use the first one
         if isinstance(df, dict):
-            print(f"Found {len(df)} sheets: {list(df.keys())}")
-            # Use the first sheet for now
+            print(f"Found {len(df)} sheet(s): {list(df.keys())}")
             sheet_name = list(df.keys())[0]
             df = df[sheet_name]
             print(f"Using sheet: '{sheet_name}'")
-        
+
+        # Show basic info about the loaded data
         print(f"\n✓ Dataset loaded successfully!")
-        print(f"  - Shape: {df.shape[0]} rows × {df.shape[1]} columns")
-        print(f"  - Memory usage: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
-        
+        print(f"  Rows: {df.shape[0]}")
+        print(f"  Columns: {df.shape[1]}")
+        print(f"  Memory: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
+
         return df
-    
+
     except FileNotFoundError:
-        print(f"✗ Error: File not found at {file_path}")
+        print(f"✗ Error: File not found at '{file_path}'")
         return None
     except Exception as e:
         print(f"✗ Error loading file: {str(e)}")
         return None
 
-# =============================================================================
-# STEP 4: UNDERSTAND THE DATA
-# =============================================================================
 
-def explore_data_structure(df):
+# ---- 1.2 Examine the Data Structure ----
+
+def examine_data(df):
     """
-    This function explores the basic structure of our dataset.
-    It tells us what columns we have, their data types, and gives first few rows.
-    
+    Explore the structure of the dataset using:
+      - df.dtypes       (data types of each column)
+      - df.head()        (first 5 rows)
+      - df.tail()        (last 5 rows)
+      - df.describe()    (statistics for numerical columns)
+      - df.shape         (rows, columns)
+      - df.isnull().sum() (missing values per column)
+
     Parameters:
-        df (DataFrame): The dataset to explore
+        df (DataFrame): The dataset to examine
     """
-    print("\n" + "="*70)
-    print("STEP 2: EXPLORING DATA STRUCTURE")
-    print("="*70)
-    
-    # 1. Show column names and their data types
-    print("\n📋 DATA TYPES:")
-    print("-" * 70)
+    print("\n" + "=" * 70)
+    print("TASK 1.2: EXAMINING DATA STRUCTURE")
+    print("=" * 70)
+
+    # Shape of the DataFrame
+    print(f"\nShape: {df.shape[0]} rows × {df.shape[1]} columns")
+
+    # Data types of each column
+    print("\n--- Data Types ---")
     print(df.dtypes)
-    
-    # 2. Show first 5 rows to see what the data looks like
-    print("\n📊 FIRST 5 ROWS OF DATA:")
-    print("-" * 70)
+
+    # First 5 rows — see what the data looks like
+    print("\n--- First 5 Rows (head) ---")
     print(df.head())
-    
-    # 3. Show last 5 rows
-    print("\n📊 LAST 5 ROWS OF DATA:")
-    print("-" * 70)
+
+    # Last 5 rows — check the end of the data
+    print("\n--- Last 5 Rows (tail) ---")
     print(df.tail())
-    
-    # 4. Get basic statistics for numerical columns
-    print("\n📈 NUMERICAL COLUMNS STATISTICS:")
-    print("-" * 70)
+
+    # Statistical summary of numerical columns
+    print("\n--- Numerical Statistics (describe) ---")
     print(df.describe())
-    
-    # 5. Check for missing values
-    print("\n❓ MISSING VALUES CHECK:")
-    print("-" * 70)
-    missing_data = df.isnull().sum()
-    missing_percentage = (missing_data / len(df)) * 100
-    
-    # Only show columns with missing values
+
+    # Missing values check
+    print("\n--- Missing Values ---")
+    missing = df.isnull().sum()
+    missing_pct = (missing / len(df)) * 100
+
     missing_info = pd.DataFrame({
-        'Missing Count': missing_data,
-        'Percentage': missing_percentage
+        'Missing Count': missing,
+        'Percentage (%)': missing_pct.round(2)
     })
-    missing_info = missing_info[missing_info['Missing Count'] > 0]
-    
-    if len(missing_info) > 0:
-        print(missing_info)
+    # Show only columns that have missing values
+    has_missing = missing_info[missing_info['Missing Count'] > 0]
+
+    if len(has_missing) > 0:
+        print(has_missing)
     else:
         print("✓ No missing values found!")
 
-# =============================================================================
-# STEP 5: UNDERSTAND COLUMNS MEANING
-# =============================================================================
+
+# ---- 1.3 Create Data Dictionary ----
 
 def create_data_dictionary(df):
     """
-    This function creates a data dictionary explaining what each column means.
-    A data dictionary is like a user manual for your dataset.
-    
+    Create a data dictionary explaining each column.
+    Uses: df.dtypes, df[col].nunique(), df[col].isnull().sum(), df[col].head()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
-        DataFrame: Data dictionary with column information
+        DataFrame: Data dictionary with column-level information
     """
-    print("\n" + "="*70)
-    print("STEP 3: CREATING DATA DICTIONARY")
-    print("="*70)
-    
-    # Create a dictionary explaining each column
+    print("\n" + "=" * 70)
+    print("TASK 1.3: DATA DICTIONARY")
+    print("=" * 70)
+
     column_info = {}
-    
-    for column in df.columns:
-        column_info[column] = {
-            'Data Type': str(df[column].dtype),
-            'Unique Values': df[column].nunique(),
-            'Missing Values': df[column].isnull().sum(),
-            'Sample Values': str(df[column].dropna().head(3).tolist())
+
+    for col in df.columns:
+        column_info[col] = {
+            'Data Type': str(df[col].dtype),
+            'Unique Values': df[col].nunique(),
+            'Missing': df[col].isnull().sum(),
+            'Sample Values': str(df[col].dropna().head(3).tolist())
         }
-    
-    # Convert to DataFrame for better display
+
     data_dict = pd.DataFrame(column_info).T
-    print("\n📚 DATA DICTIONARY:")
-    print(data_dict)
-    
+    print("\n", data_dict)
+
     return data_dict
 
+
 # =============================================================================
-# STEP 6: CLEAN DATE/TIME COLUMNS
+# TASK 2: CLEAN AND PREPROCESS THE DATA
 # =============================================================================
+
+# ---- 2.1 Convert Date/Time Columns ----
 
 def clean_datetime_columns(df):
     """
-    This function identifies and converts date/time columns to proper datetime format.
-    Proper datetime format allows us to do time-based analysis.
-    
+    Find and convert date/time columns to proper datetime format.
+    Uses: pd.to_datetime()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
-        DataFrame: Dataset with cleaned datetime columns
+        DataFrame: Dataset with converted datetime columns
     """
-    print("\n" + "="*70)
-    print("STEP 4: CLEANING DATE/TIME COLUMNS")
-    print("="*70)
-    
-    # List of common date column names
-    date_columns = ['date', 'datetime', 'timestamp', 'time', 'Date', 'Date Time', 
-                    'Transaction Date', 'Timestamp']
-    
-    found_date_cols = []
-    
-    # Find columns that might be date columns
+    print("\n" + "=" * 70)
+    print("TASK 2.1: CLEANING DATE/TIME COLUMNS")
+    print("=" * 70)
+
+    # Common keywords that indicate a date column
+    date_keywords = ['date', 'datetime', 'timestamp', 'time']
+    converted = []
+
+    # Strategy 1: Check column names for date-like keywords
     for col in df.columns:
-        # Check if column name suggests it's a date column
-        if any(date_keyword in col.lower() for date_keyword in date_columns):
+        if any(keyword in col.lower() for keyword in date_keywords):
             try:
-                # Try to convert to datetime
                 df[col] = pd.to_datetime(df[col])
-                found_date_cols.append(col)
-                print(f"✓ Converted '{col}' to datetime format")
-            except:
+                converted.append(col)
+                print(f"✓ Converted '{col}' to datetime")
+            except Exception:
                 print(f"✗ Could not convert '{col}' to datetime")
-    
-    if len(found_date_cols) == 0:
-        print("⚠ No standard date columns found. Looking for date-like patterns...")
-        
-        # Try to find columns with date-like values
+
+    # Strategy 2: If no standard date columns found, look for date-like values
+    if len(converted) == 0:
+        print("Looking for date-like patterns in object columns...")
         for col in df.columns:
-            try:
-                sample = df[col].dropna().head(5)
-                if sample.dtype == 'object':
-                    # Try parsing
-                    test_parse = pd.to_datetime(sample, errors='coerce')
-                    if test_parse.notna().sum() > 3:
+            if df[col].dtype == 'object':
+                try:
+                    sample = df[col].dropna().head(5)
+                    test = pd.to_datetime(sample, errors='coerce')
+                    if test.notna().sum() > 3:
                         df[col] = pd.to_datetime(df[col], errors='coerce')
-                        found_date_cols.append(col)
-                        print(f"✓ Converted '{col}' to datetime format")
-            except:
-                pass
-    
-    print(f"\n✓ Found {len(found_date_cols)} date/time column(s)")
+                        converted.append(col)
+                        print(f"✓ Converted '{col}' to datetime")
+                except Exception:
+                    pass
+
+    print(f"\nTotal datetime columns converted: {len(converted)}")
     return df
 
-# =============================================================================
-# STEP 7: HANDLE MISSING VALUES
-# =============================================================================
+
+# ---- 2.2 Handle Missing Values ----
 
 def handle_missing_values(df):
     """
-    This function handles missing values in the dataset.
-    We can: remove them, fill them with zeros, or fill with average values.
-    
+    Handle missing values using appropriate strategies:
+      - Numerical cash/amount columns → fill with 0 (no transaction)
+      - Other numerical columns → fill with median
+      - Categorical columns → fill with 'Unknown'
+      - Drop rows where critical columns (branch, date) are still null
+
+    Uses: df.select_dtypes(), df[col].fillna(), df[col].median(), df.dropna()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
-        DataFrame: Dataset with handled missing values
+        DataFrame: Dataset with missing values handled
     """
-    print("\n" + "="*70)
-    print("STEP 5: HANDLING MISSING VALUES")
-    print("="*70)
-    
+    print("\n" + "=" * 70)
+    print("TASK 2.2: HANDLING MISSING VALUES")
+    print("=" * 70)
+
     initial_rows = len(df)
-    
-    # Strategy 1: For numerical columns, fill with 0 or mean
+
+    # --- Numerical columns ---
     numerical_cols = df.select_dtypes(include=[np.number]).columns
-    
+
     for col in numerical_cols:
         if df[col].isnull().sum() > 0:
-            # If it's cash/amount column, fill with 0 (no transaction occurred)
-            if any(keyword in col.lower() for keyword in ['cash', 'deposit', 'withdrawal', 'balance', 'amount']):
-                df[col].fillna(0, inplace=True)
-                print(f"✓ Filled missing values in '{col}' with 0")
+            # Cash-related columns: fill with 0
+            cash_keywords = ['cash', 'deposit', 'withdrawal', 'balance', 'amount',
+                             'total_dr', 'total_cr', 'dr', 'cr']
+            if any(kw in col.lower() for kw in cash_keywords):
+                df[col] = df[col].fillna(0)
+                print(f"✓ '{col}' — filled with 0")
             else:
-                # For other numerical columns, use median
+                # Other numerical: fill with median
                 median_val = df[col].median()
-                df[col].fillna(median_val, inplace=True)
-                print(f"✓ Filled missing values in '{col}' with median: {median_val:.2f}")
-    
-    # Strategy 2: For categorical columns, fill with 'Unknown'
+                df[col] = df[col].fillna(median_val)
+                print(f"✓ '{col}' — filled with median ({median_val:.2f})")
+
+    # --- Categorical columns ---
     categorical_cols = df.select_dtypes(include=['object']).columns
-    
+
     for col in categorical_cols:
         if df[col].isnull().sum() > 0:
-            df[col].fillna('Unknown', inplace=True)
-            print(f"✓ Filled missing values in '{col}' with 'Unknown'")
-    
-    # Strategy 3: Remove rows where critical columns are still missing
-    critical_cols = [col for col in df.columns if 'branch' in col.lower() or 'date' in col.lower()]
-    
+            df[col] = df[col].fillna('Unknown')
+            print(f"✓ '{col}' — filled with 'Unknown'")
+
+    # --- Drop rows where critical columns are null ---
+    critical_cols = [col for col in df.columns
+                     if 'branch' in col.lower() or 'date' in col.lower()]
+
     if critical_cols:
-        df.dropna(subset=critical_cols, inplace=True)
+        df = df.dropna(subset=critical_cols)
         rows_removed = initial_rows - len(df)
         if rows_removed > 0:
             print(f"✓ Removed {rows_removed} rows with missing critical data")
-    
-    print(f"\n✓ Missing value handling complete!")
-    print(f"  - Final dataset shape: {df.shape[0]} rows × {df.shape[1]} columns")
-    
+
+    print(f"\nFinal shape after missing value handling: {df.shape[0]} rows × {df.shape[1]} columns")
+
     return df
 
-# =============================================================================
-# STEP 8: REMOVE DUPLICATES
-# =============================================================================
+
+# ---- 2.3 Remove Duplicates ----
 
 def remove_duplicates(df):
     """
-    This function removes duplicate rows from the dataset.
-    Duplicates can skew our analysis.
-    
+    Remove duplicate rows from the dataset.
+    Uses: df.duplicated().sum(), df.drop_duplicates()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
-        DataFrame: Dataset with duplicates removed
+        DataFrame: Dataset without duplicate rows
     """
-    print("\n" + "="*70)
-    print("STEP 6: REMOVING DUPLICATES")
-    print("="*70)
-    
+    print("\n" + "=" * 70)
+    print("TASK 2.3: REMOVING DUPLICATES")
+    print("=" * 70)
+
     initial_rows = len(df)
-    
-    # Check for duplicate rows
     duplicates = df.duplicated().sum()
-    print(f"Found {duplicates} duplicate rows")
-    
+    print(f"Duplicate rows found: {duplicates}")
+
     if duplicates > 0:
-        df.drop_duplicates(inplace=True)
-        rows_removed = initial_rows - len(df)
-        print(f"✓ Removed {rows_removed} duplicate rows")
-    
-    print(f"✓ Final dataset shape: {df.shape[0]} rows × {df.shape[1]} columns")
-    
+        df = df.drop_duplicates()
+        print(f"✓ Removed {initial_rows - len(df)} duplicate rows")
+
+    print(f"Final shape: {df.shape[0]} rows × {df.shape[1]} columns")
+
     return df
 
-# =============================================================================
-# STEP 9: GENERATE EXTERNAL FEATURES
-# =============================================================================
 
-def generate_external_features(df):
-    """
-    This function adds useful features from dates, like:
-    - Day of week (Monday, Tuesday, etc.)
-    - Weekend indicator (Yes/No)
-    - Month, Quarter, Year
-    - Holiday information
-    
-    Parameters:
-        df (DataFrame): The dataset with date column
-        
-    Returns:
-        DataFrame: Dataset with new features
-    """
-    print("\n" + "="*70)
-    print("STEP 7: GENERATING EXTERNAL FEATURES")
-    print("="*70)
-    
-    # Find the date column (usually the first datetime column)
-    date_cols = df.select_dtypes(include=['datetime64']).columns
-    
-    if len(date_cols) == 0:
-        print("⚠ No date column found. Skipping feature generation.")
-        return df
-    
-    date_col = date_cols[0]  # Use the first date column
-    print(f"Using date column: '{date_col}'")
-    
-    # Extract basic date features
-    print("\n📅 Generating date features...")
-    
-    df['Year'] = df[date_col].dt.year  # Year (2024, 2025, etc.)
-    df['Month'] = df[date_col].dt.month  # Month number (1-12)
-    df['Day'] = df[date_col].dt.day  # Day of month (1-31)
-    df['Week'] = df[date_col].dt.isocalendar().week  # Week number (1-52)
-    df['Quarter'] = df[date_col].dt.quarter  # Quarter (1-4)
-    
-    # Day of week: Monday=0, Sunday=6
-    df['DayOfWeek'] = df[date_col].dt.dayofweek
-    
-    # Weekend indicator: 1 if weekend (Saturday/Sunday), 0 otherwise
-    df['IsWeekend'] = df['DayOfWeek'].apply(lambda x: 1 if x >= 5 else 0)
-    
-    # Half-day indicator (morning/afternoon)
-    # Check for existing hour/time columns first (e.g., txn_hour)
-    hour_cols = [col for col in df.columns if 'hour' in col.lower() or 'time' in col.lower()]
-    
-    if hour_cols and df[hour_cols[0]].dtype in ['int64', 'float64']:
-        # Use existing hour column (like txn_hour)
-        df['Hour'] = df[hour_cols[0]]
-        print(f"  Using existing hour column: '{hour_cols[0]}'")
-    elif 'Hour' not in df.columns:
-        # Try to extract hour from datetime column
-        try:
-            df['Hour'] = df[date_col].dt.hour
-        except:
-            df['Hour'] = 12  # Default to noon if no time info
-    
-    # Morning (6-14) vs Afternoon (14-22) vs Night
-    df['HalfDay'] = df['Hour'].apply(
-        lambda x: 'Morning' if 6 <= x < 14 else ('Afternoon' if 14 <= x < 22 else 'Night')
-    )
-    
-    # Day name
-    df['DayName'] = df[date_col].dt.day_name()
-    
-    # Date features generated
-    print("✓ Year")
-    print("✓ Month")
-    print("✓ Day")
-    print("✓ Week")
-    print("✓ Quarter")
-    print("✓ Day of Week")
-    print("✓ Weekend Indicator")
-    print("✓ Half-Day Slot")
-    print("✓ Day Name")
-    
-    # Add Pakistani holidays (simplified version)
-    print("\n🎉 Adding holiday features...")
-    
-    # Common Pakistani public holidays (dates)
-    pakistan_holidays = [
-        # New Year
-        '01-01',
-        # Pakistan Day (March 23)
-        '03-23',
-        # Labour Day (May 1)
-        '05-01',
-        # Independence Day (August 14)
-        '08-14',
-        # Defence Day (September 6)
-        '09-06',
-        # Iqbal Day (November 9)
-        '11-09',
-        # Quaid-e-Azam Day (December 25)
-        '12-25',
-        # Eid-ul-Fitr (approximate - varies by moon sighting)
-        '03-30', '03-31', '04-01',  # Example dates for 2024
-        # Eid-ul-Adha (approximate)
-        '06-16', '06-17', '06-18',  # Example dates
-    ]
-    
-    # Mark holidays
-    df['IsHoliday'] = df[date_col].apply(
-        lambda x: 1 if x.strftime('%m-%d') in pakistan_holidays else 0
-    )
-    
-    print("✓ Holiday indicators added")
-    
-    # Salary cycle approximation (first week of month typically salary)
-    df['IsSalaryWeek'] = df['Day'].apply(lambda x: 1 if x <= 7 else 0)
-    print("✓ Salary week indicator added")
-    
-    new_features = [c for c in df.columns if c not in [date_col, 'txn_hour', 'tran_br_code', 'TOTAL_DR', 'TOTAL_CR']]
-    print(f"\n✓ Generated {len(new_features)} new features: {new_features}")
-    
-    return df
-
-# =============================================================================
-# STEP 10: HANDLE OUTLIERS
-# =============================================================================
+# ---- 2.4 Handle Outliers ----
 
 def handle_outliers(df):
     """
-    This function detects and handles outliers in numerical columns.
-    Outliers are values that are too high or too low compared to normal values.
-    
+    Detect and cap outliers in cash-related numerical columns
+    using the IQR (Interquartile Range) method.
+      - Q1 = 25th percentile
+      - Q3 = 75th percentile
+      - IQR = Q3 - Q1
+      - Lower bound = Q1 - 1.5 * IQR
+      - Upper bound = Q3 + 1.5 * IQR
+
+    Uses: df[col].quantile(), df[col].clip()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
-        DataFrame: Dataset with outliers handled
+        DataFrame: Dataset with outliers capped
     """
-    print("\n" + "="*70)
-    print("STEP 8: HANDLING OUTLIERS")
-    print("="*70)
-    
-    # Find numerical columns that might have outliers
+    print("\n" + "=" * 70)
+    print("TASK 2.4: HANDLING OUTLIERS (IQR Method)")
+    print("=" * 70)
+
+    # Select numerical columns
     numerical_cols = df.select_dtypes(include=[np.number]).columns
-    
-    # Focus on cash-related columns
-    cash_cols = [col for col in numerical_cols if any(
-        keyword in col.lower() for keyword in ['cash', 'deposit', 'withdrawal', 'balance', 'amount',
-                                                'total_dr', 'total_cr', 'dr', 'cr', 'debit', 'credit']
-    )]
-    
-    outlier_counts = {}
-    
+
+    # Focus on cash-related columns for outlier handling
+    cash_keywords = ['cash', 'deposit', 'withdrawal', 'balance', 'amount',
+                     'total_dr', 'total_cr', 'dr', 'cr', 'debit', 'credit']
+    cash_cols = [col for col in numerical_cols
+                 if any(kw in col.lower() for kw in cash_keywords)]
+
+    outlier_summary = {}
+
     for col in cash_cols:
-        # Calculate Q1 (25th percentile) and Q3 (75th percentile)
-        Q1 = df[col].quantile(0.25)  # 25% of data is below this
-        Q3 = df[col].quantile(0.75)  # 75% of data is below this
-        
-        # Calculate Interquartile Range (IQR)
+        Q1 = df[col].quantile(0.25)
+        Q3 = df[col].quantile(0.75)
         IQR = Q3 - Q1
-        
-        # Define outlier boundaries
-        lower_bound = Q1 - 1.5 * IQR  # Too low outliers
-        upper_bound = Q3 + 1.5 * IQR  # Too high outliers
-        
-        # Find outliers
-        outliers = df[(df[col] < lower_bound) | (df[col] > upper_bound)]
-        
-        if len(outliers) > 0:
-            outlier_counts[col] = len(outliers)
-            print(f"⚠ Column '{col}': {len(outliers)} outliers detected")
-            
-            # Cap outliers at boundaries instead of removing them
-            # This preserves data while reducing extreme effects
+
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+
+        # Count outliers before capping
+        outlier_count = ((df[col] < lower_bound) | (df[col] > upper_bound)).sum()
+
+        if outlier_count > 0:
+            outlier_summary[col] = outlier_count
+            # Cap outliers at the boundaries
             df[col] = df[col].clip(lower=lower_bound, upper=upper_bound)
-    
-    if len(outlier_counts) > 0:
-        print("\n✓ Outliers capped at reasonable boundaries")
+            print(f"⚠ '{col}': {outlier_count} outliers → capped at [{lower_bound:.2f}, {upper_bound:.2f}]")
+
+    if len(outlier_summary) == 0:
+        print("✓ No significant outliers detected")
     else:
-        print("✓ No significant outliers found")
-    
+        print(f"\n✓ Outliers handled in {len(outlier_summary)} column(s)")
+
     return df
 
-# =============================================================================
-# STEP 11: DATA VALIDATION
-# =============================================================================
+
+# ---- 2.5 Validate Data ----
 
 def validate_data(df):
     """
-    This function validates the data to ensure it makes business sense.
-    Example: Closing balance = Opening balance + Deposits - Withdrawals
-    
+    Validate the data for business-logic correctness.
+    Example: Ensure no negative balance values exist.
+
+    Uses: df[col].clip()
+
     Parameters:
         df (DataFrame): The dataset
-        
+
     Returns:
         DataFrame: Validated dataset
     """
-    print("\n" + "="*70)
-    print("STEP 9: DATA VALIDATION")
-    print("="*70)
-    
-    # Try to find relevant columns
+    print("\n" + "=" * 70)
+    print("TASK 2.5: DATA VALIDATION")
+    print("=" * 70)
+
+    # Find balance-related columns and ensure no negative values
     balance_cols = [col for col in df.columns if 'balance' in col.lower()]
-    deposit_cols = [col for col in df.columns if 'deposit' in col.lower()]
-    withdrawal_cols = [col for col in df.columns if 'withdrawal' in col.lower()]
-    
-    if balance_cols and deposit_cols and withdrawal_cols:
-        print("✓ Found balance, deposit, and withdrawal columns")
-        
-        # Basic validation: ensure no negative balances
-        for col in balance_cols:
-            if (df[col] < 0).sum() > 0:
-                print(f"⚠ {col} has {(df[col] < 0).sum()} negative values (clipped to 0)")
-                df[col] = df[col].clip(lower=0)
-    
-    # Check for logical errors
-    print("\n✓ Data validates successfully")
-    
+
+    for col in balance_cols:
+        negatives = (df[col] < 0).sum()
+        if negatives > 0:
+            print(f"⚠ '{col}': {negatives} negative values → clipped to 0")
+            df[col] = df[col].clip(lower=0)
+
+    # Final missing values check after all preprocessing
+    remaining_missing = df.isnull().sum().sum()
+    print(f"\nRemaining missing values: {remaining_missing}")
+
+    # Final data types summary
+    print(f"\n--- Final Data Types ---")
+    print(df.dtypes)
+
+    print("\n✓ Data validation complete")
+
     return df
 
+
 # =============================================================================
-# STEP 12: GENERATE SUMMARY STATISTICS
+# SUMMARY REPORT
 # =============================================================================
 
-def generate_summary_report(df, original_df):
+def print_summary(df, original_df):
     """
-    This function generates a comprehensive summary report of the data.
-    
+    Print a comparison between original and cleaned datasets.
+
     Parameters:
         df (DataFrame): Cleaned dataset
-        original_df (DataFrame): Original dataset (before cleaning)
+        original_df (DataFrame): Original dataset before cleaning
     """
-    print("\n" + "="*70)
-    print("STEP 10: SUMMARY REPORT")
-    print("="*70)
-    
-    print("\n📊 DATASET COMPARISON:")
-    print("-" * 70)
-    print(f"Original dataset: {original_df.shape[0]} rows × {original_df.shape[1]} columns")
-    print(f"Cleaned dataset:  {df.shape[0]} rows × {df.shape[1]} columns")
-    print(f"Rows removed:     {original_df.shape[0] - df.shape[0]}")
-    print(f"Features added:   {df.shape[1] - original_df.shape[1]}")
-    
-    print("\n📊 NEW FEATURES SUMMARY:")
-    print("-" * 70)
-    
-    # Show value counts for categorical features
-    if 'IsWeekend' in df.columns:
-        print("\nWeekend vs Weekday distribution:")
-        print(df['IsWeekend'].value_counts())
-    
-    if 'HalfDay' in df.columns:
-        print("\nHalf-Day distribution:")
-        print(df['HalfDay'].value_counts())
-    
-    if 'IsHoliday' in df.columns:
-        print("\nHoliday distribution:")
-        print(df['IsHoliday'].value_counts())
-    
-    if 'Month' in df.columns:
-        print("\nMonthly distribution:")
-        print(df['Month'].value_counts().sort_index())
+    print("\n" + "=" * 70)
+    print("SUMMARY REPORT")
+    print("=" * 70)
+
+    print(f"\nOriginal dataset:  {original_df.shape[0]} rows × {original_df.shape[1]} columns")
+    print(f"Cleaned dataset:   {df.shape[0]} rows × {df.shape[1]} columns")
+    print(f"Rows removed:      {original_df.shape[0] - df.shape[0]}")
+    print(f"Columns unchanged: {df.shape[1]}")
+
+    # Show unique values for key columns using value_counts()
+    print("\n--- Key Column Distributions ---")
+    for col in df.columns:
+        if df[col].nunique() <= 20 and df[col].dtype == 'object':
+            print(f"\n{col}:")
+            print(df[col].value_counts())
+
 
 # =============================================================================
-# STEP 13: VISUALIZATION (EDA)
+# SAVE CLEANED DATA
 # =============================================================================
 
-def create_visualizations(df):
+def save_cleaned_data(df, output_path):
     """
-    This function creates visual charts to understand the data better.
-    
+    Save the cleaned DataFrame to a CSV file.
+
     Parameters:
-        df (DataFrame): The cleaned dataset
+        df (DataFrame): Cleaned dataset
+        output_path (str): File path for the output CSV
     """
-    print("\n" + "="*70)
-    print("STEP 11: CREATING VISUALIZATIONS")
-    print("="*70)
-    
-    # Create a figure with multiple subplots
-    fig, axes = plt.subplots(2, 3, figsize=(18, 10))
-    fig.suptitle('Bank Cash Data - Exploratory Data Analysis', fontsize=16, fontweight='bold')
-    
-    # Find withdrawal/debit column
-    dr_col = next((c for c in df.columns if c in ['Withdrawal', 'Cash Withdrawal', 'TOTAL_DR']), None)
-    # Find deposit/credit column  
-    cr_col = next((c for c in df.columns if c in ['Deposit', 'Cash Deposit', 'TOTAL_CR']), None)
-    
-    # Plot 1: Cash Withdrawals/Debits Distribution
-    if dr_col:
-        axes[0, 0].hist(df[dr_col], bins=50, color='coral', edgecolor='black', alpha=0.7)
-        axes[0, 0].set_title(f'{dr_col} Distribution')
-        axes[0, 0].set_xlabel('Amount')
-        axes[0, 0].set_ylabel('Frequency')
-    
-    # Plot 2: Cash Deposits/Credits Distribution
-    if cr_col:
-        axes[0, 1].hist(df[cr_col], bins=50, color='skyblue', edgecolor='black', alpha=0.7)
-        axes[0, 1].set_title(f'{cr_col} Distribution')
-        axes[0, 1].set_xlabel('Amount')
-        axes[0, 1].set_ylabel('Frequency')
-    
-    # Plot 3: Weekend vs Weekday
-    if 'IsWeekend' in df.columns:
-        weekend_counts = df['IsWeekend'].value_counts()
-        axes[0, 2].pie(weekend_counts.values, labels=['Weekday', 'Weekend'], 
-                       autopct='%1.1f%%', colors=['lightblue', 'orange'])
-        axes[0, 2].set_title('Weekend vs Weekday')
-    
-    # Plot 4: Monthly Trends
-    if 'Month' in df.columns:
-        monthly_data = df.groupby('Month').size()
-        axes[1, 0].bar(monthly_data.index, monthly_data.values, color='teal')
-        axes[1, 0].set_title('Transactions by Month')
-        axes[1, 0].set_xlabel('Month')
-        axes[1, 0].set_ylabel('Count')
-    
-    # Plot 5: Half-Day Distribution
-    if 'HalfDay' in df.columns:
-        halfday_counts = df['HalfDay'].value_counts()
-        axes[1, 1].bar(halfday_counts.index, halfday_counts.values, color='purple')
-        axes[1, 1].set_title('Half-Day Distribution')
-        axes[1, 1].set_xlabel('Time of Day')
-        axes[1, 1].set_ylabel('Count')
-    
-    # Plot 6: Daily Average Debit/Credit Over Time
-    date_cols = df.select_dtypes(include=['datetime64']).columns
-    if len(date_cols) > 0 and dr_col:
-        date_col = date_cols[0]
-        daily_avg = df.groupby(date_col)[dr_col].mean()
-        axes[1, 2].plot(daily_avg.index, daily_avg.values, color='green', alpha=0.7)
-        axes[1, 2].set_title(f'Average Daily {dr_col}')
-        axes[1, 2].set_xlabel('Date')
-        axes[1, 2].set_ylabel('Amount')
-    
-    plt.tight_layout()
-    
-    # Save the plot
-    plot_path = "../Bank DataSet/eda_plots.png"
-    plt.savefig(plot_path, dpi=300, bbox_inches='tight')
-    print(f"✓ Visualizations saved to: {plot_path}")
-    
-    # Close the plot to free memory (plot is already saved to file)
-    plt.close()
+    print("\n" + "=" * 70)
+    print("SAVING CLEANED DATA")
+    print("=" * 70)
+
+    df.to_csv(output_path, index=False)
+    print(f"✓ Cleaned dataset saved to: {output_path}")
+
 
 # =============================================================================
-# MAIN EXECUTION FUNCTION
+# MAIN EXECUTION
 # =============================================================================
 
 def main():
     """
-    Main function that runs all Phase 1 steps in order.
-    This is like the conductor of an orchestra - coordinates everything.
+    Main function — runs all Phase 1 steps in order.
+    Task 1: Load and examine the banking dataset
+    Task 2: Clean and preprocess the data
     """
-    print("="*70)
-    print(" "*15 + "BANK CASH FORECASTING SYSTEM")
-    print(" "*20 + "Phase 1: Data Preparation")
-    print("="*70)
-    
-    # Store original dataset for comparison
-    original_df = None
-    
-    # Step 1: Load data
+    print("=" * 70)
+    print(" " * 10 + "BANK BRANCH CASH FORECASTING SYSTEM")
+    print(" " * 15 + "Phase 1: Data Preparation")
+    print(" " * 10 + "Task 1: Load & Examine | Task 2: Clean & Preprocess")
+    print("=" * 70)
+
+    # ---- TASK 1: Load and Examine ----
     df = load_dataset(DATASET_PATH)
-    
+
     if df is None:
         print("\n✗ Failed to load dataset. Please check the file path.")
         return
-    
-    original_df = df.copy()  # Keep copy of original
-    
-    # Step 2: Explore structure
-    explore_data_structure(df)
-    
-    # Step 3: Create data dictionary
+
+    # Keep a copy of original data for comparison
+    original_df = df.copy()
+
+    examine_data(df)
     create_data_dictionary(df)
-    
-    # Step 4: Clean datetime columns
+
+    # ---- TASK 2: Clean and Preprocess ----
     df = clean_datetime_columns(df)
-    
-    # Step 5: Handle missing values
     df = handle_missing_values(df)
-    
-    # Step 6: Remove duplicates
     df = remove_duplicates(df)
-    
-    # Step 7: Generate external features
-    df = generate_external_features(df)
-    
-    # Step 8: Handle outliers
     df = handle_outliers(df)
-    
-    # Step 9: Validate data
     df = validate_data(df)
-    
-    # Step 10: Generate summary report
-    generate_summary_report(df, original_df)
-    
-    # Step 11: Create visualizations
-    create_visualizations(df)
-    
-    # Step 12: Save cleaned data
-    print("\n" + "="*70)
-    print("STEP 12: SAVING CLEANED DATA")
-    print("="*70)
-    
-    df.to_csv(OUTPUT_PATH, index=False)
-    print(f"✓ Cleaned dataset saved to: {OUTPUT_PATH}")
-    
-    print("\n" + "="*70)
-    print(" "*20 + "PHASE 1 COMPLETED SUCCESSFULLY!")
-    print("="*70)
+
+    # ---- Summary & Save ----
+    print_summary(df, original_df)
+    save_cleaned_data(df, OUTPUT_PATH)
+
+    print("\n" + "=" * 70)
+    print(" " * 15 + "PHASE 1 (Tasks 1 & 2) COMPLETED!")
+    print("=" * 70)
     print("\nNext Steps:")
     print("  1. Review the cleaned dataset")
-    print("  2. Check the EDA visualizations")
-    print("  3. Move to Phase 2: Feature Engineering & Model Development")
-    print("="*70)
-    
+    print("  2. Move to EDA and external feature integration")
+    print("  3. Proceed to Phase 2: Feature Engineering & Model Development")
+    print("=" * 70)
+
     return df
 
+
 # =============================================================================
-# RUN THE MAIN FUNCTION
+# RUN
 # =============================================================================
 
-# This line runs the main function when you execute this script
 if __name__ == "__main__":
     cleaned_data = main()

@@ -5,7 +5,8 @@
 **Project Type:** Data Science / Time Series Forecasting  
 **Domain:** Banking  
 **Prepared By:** Muhammad Usman  
-**Status:** Draft
+**Status:** In Progress  
+**Last Updated:** July 11, 2026
 
 ---
 
@@ -146,20 +147,17 @@ Prepare a clean and analysis-ready dataset.
 
 ## Tasks
 
-### 1. Data Collection
+### 1. Data Collection ✅ COMPLETED
 
-Collect historical data including:
+Collected historical data including:
 
-- Branch ID
-- Branch Name
-- Date
-- Time
-- Cash Deposits
-- Cash Withdrawals
-- Opening Balance
-- Closing Balance
-- Cash Replenishment
-- ATM Transactions (if available)
+- ✅ Branch ID (`tran_br_code`)
+- ✅ Date (`start_date`)
+- ✅ Time (`txn_hour`)
+- ✅ Cash Debits (`TOTAL_DR`)
+- ✅ Cash Credits (`TOTAL_CR`)
+
+**Dataset:** 81,717 rows × 5 columns loaded from `Bank Cash Optimization.xlsx`
 
 ---
 
@@ -177,15 +175,17 @@ Integrate
 
 ---
 
-### 3. Data Cleaning
+### 3. Data Cleaning ✅ COMPLETED
 
-Perform
+Performed:
 
-- Missing Value Handling
-- Duplicate Removal
-- Datetime Conversion
-- Outlier Detection
-- Data Validation
+- ✅ Missing Value Handling (0 missing values found)
+- ✅ Duplicate Removal (8 duplicates removed)
+- ✅ Datetime Conversion (`start_date` → datetime64)
+- ✅ Outlier Detection & Capping (IQR method on TOTAL_DR & TOTAL_CR)
+- ✅ Data Validation (no negative balances, 0 remaining nulls)
+
+**Cleaned Dataset:** 81,709 rows × 5 columns saved to `cleaned_bank_data.csv`
 
 ---
 
@@ -205,8 +205,8 @@ Analyze
 
 ## Deliverables
 
-- Clean Dataset
-- Data Dictionary
+- ✅ Clean Dataset (`Bank DataSet/cleaned_bank_data.csv`)
+- ✅ Data Dictionary (generated in `phase1_data_preparation.py`)
 - EDA Report
 - Feature Summary
 
@@ -500,11 +500,11 @@ Business Reports / Dashboard
 
 # 14. Project Timeline
 
-| Phase | Description | Deliverable |
-|--------|-------------|-------------|
-| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA |
-| Phase 2 | Feature Engineering & Model Development | Best Forecast Model |
-| Phase 3 | Forecasting & Decision Support | Business Reports + Dashboard |
+| Phase | Description | Deliverable | Status |
+|--------|-------------|-------------|--------|
+| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA | 🔄 In Progress (Tasks 1 & 3 Done) |
+| Phase 2 | Feature Engineering & Model Development | Best Forecast Model | ⬜ Not Started |
+| Phase 3 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
 
 ---
 
