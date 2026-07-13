@@ -1,12 +1,12 @@
 # Bank Branch Cash Forecasting System
 ## Software Specification (SPEC)
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Project Type:** Data Science / Time Series Forecasting  
 **Domain:** Banking  
 **Prepared By:** Muhammad Usman  
 **Status:** In Progress  
-**Last Updated:** July 11, 2026
+**Last Updated:** July 13, 2026
 
 ---
 
@@ -189,17 +189,29 @@ Performed:
 
 ---
 
-### 4. Exploratory Data Analysis
+### 4. Exploratory Data Analysis ✅ COMPLETED
 
-Analyze
+Generated **8 key visualizations** providing business insights:
 
-- Withdrawal Trends
-- Deposit Trends
-- Peak Hours
-- Branch Performance
-- Seasonal Patterns
-- Holiday Effects
-- Transaction Distribution
+| # | Plot | File | Key Insight |
+|---|------|------|-------------|
+| 1 | **Cash Flow Trend** | `1_cash_flow_trend.png` | Monthly withdrawals vs deposits over time |
+| 2 | **Transaction Distribution** | `2_transaction_distribution.png` | Distribution of DR/CR amounts (histogram + KDE) |
+| 3 | **Peak Hours Analysis** | `3_peak_hours_analysis.png` | Transaction frequency & average amounts by hour |
+| 4 | **Branch Performance** | `4_branch_performance.png` | Top & bottom 15 branches by transaction volume |
+| 5 | **Correlation Analysis** | `5_correlation_analysis.png` | DR vs CR scatter plot + correlation heatmap |
+| 6 | **Net Cash Analysis** | `6_net_cash_analysis.png` | Monthly net cash position (surplus/deficit) |
+| 7 | **Hourly Boxplot** | `7_hourly_boxplot.png` | Transaction distribution by hour |
+| 8 | **Weekly Pattern** | `8_weekly_pattern.png` | Day-of-week transaction patterns |
+
+### Key EDA Findings
+
+- **Total Net Cash Position:** Deficit of **-10,317.47M** (withdrawals exceed deposits)
+- **Busiest Hour:** **12:00 PM** (8,980 transactions)
+- **Busiest Day:** **Friday**
+- **Highest Activity Branch:** **Branch 104** (46,090M in withdrawals)
+- **Avg Transaction:** Withdrawal = 4.1M, Deposit = 3.98M
+- **DR vs CR Correlation:** 0.4310 (moderate positive correlation)
 
 ---
 
@@ -207,7 +219,8 @@ Analyze
 
 - ✅ Clean Dataset (`Bank DataSet/cleaned_bank_data.csv`)
 - ✅ Data Dictionary (generated in `phase1_data_preparation.py`)
-- EDA Report
+- ✅ **EDA Report** (8 visualizations + summary in `Bank DataSet/eda_plots/`)
+- ✅ **EDA Script** (`Bank Project/phase1_eda.py`)
 - Feature Summary
 
 ---
@@ -502,7 +515,7 @@ Business Reports / Dashboard
 
 | Phase | Description | Deliverable | Status |
 |--------|-------------|-------------|--------|
-| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA | 🔄 In Progress (Tasks 1 & 3 Done) |
+| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA Report + 8 Visualizations | ✅ Completed |
 | Phase 2 | Feature Engineering & Model Development | Best Forecast Model | ⬜ Not Started |
 | Phase 3 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
 
