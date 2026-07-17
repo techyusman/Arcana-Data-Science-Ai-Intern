@@ -6,7 +6,7 @@
 **Domain:** Banking  
 **Prepared By:** Muhammad Usman  
 **Status:** In Progress  
-**Last Updated:** July 13, 2026
+**Last Updated:** July 17, 2026
 
 ---
 
@@ -191,18 +191,33 @@ Performed:
 
 ### 4. Exploratory Data Analysis ✅ COMPLETED
 
-Generated **8 key visualizations** providing business insights:
+Generated comprehensive visualizations through multiple analysis scripts:
 
-| # | Plot | File | Key Insight |
-|---|------|------|-------------|
-| 1 | **Cash Flow Trend** | `1_cash_flow_trend.png` | Monthly withdrawals vs deposits over time |
-| 2 | **Transaction Distribution** | `2_transaction_distribution.png` | Distribution of DR/CR amounts (histogram + KDE) |
-| 3 | **Peak Hours Analysis** | `3_peak_hours_analysis.png` | Transaction frequency & average amounts by hour |
-| 4 | **Branch Performance** | `4_branch_performance.png` | Top & bottom 15 branches by transaction volume |
-| 5 | **Correlation Analysis** | `5_correlation_analysis.png` | DR vs CR scatter plot + correlation heatmap |
-| 6 | **Net Cash Analysis** | `6_net_cash_analysis.png` | Monthly net cash position (surplus/deficit) |
-| 7 | **Hourly Boxplot** | `7_hourly_boxplot.png` | Transaction distribution by hour |
-| 8 | **Weekly Pattern** | `8_weekly_pattern.png` | Day-of-week transaction patterns |
+#### Phase 1 — Initial EDA (`phase1_eda.py`)
+- **8 original plots** including cash flow trends, transaction distribution, peak hours, branch performance, correlation analysis, net cash analysis, hourly boxplots, and weekly patterns
+
+#### Phase 2 — Cash Requirement & Deficit Analysis (`phase2_cash_analysis.py`)
+- **5 additional plots** for half-day cash requirement, branch net cash position, branch-hour heatmap, daily net cash with rolling average, and branch deficit frequency/severity
+
+#### Daily Merge & Time Series EDA (`daily_merge_and_timeseries_eda.py`)
+- **10 time series plots** including daily cash flow trends, weekly seasonal patterns, monthly trends, cumulative cash flow, weekend vs weekday analysis, daily distributions, and time series decomposition
+
+#### Combined EDA (`eda.py`) ✅ NEW
+A unified script combining **11 selected graphs** from all three analysis modules, eliminating redundant visualizations:
+
+| # | Plot | File | Source |
+|---|------|------|--------|
+| 1 | **Peak Hours Analysis** | `3_peak_hours_analysis.png` | Phase 1 EDA |
+| 2 | **Branch Performance** | `4_branch_performance.png` | Phase 1 EDA |
+| 3 | **Net Cash Analysis** | `6_net_cash_analysis.png` | Phase 1 EDA |
+| 4 | **Hourly Boxplot** | `7_hourly_boxplot.png` | Phase 1 EDA |
+| 5 | **Branch Net Cash Position** | `10_branch_net_cash_position.png` | Phase 2 Cash Analysis |
+| 6 | **Branch × Hour Heatmap** | `11_branch_hour_heatmap.png` | Phase 2 Cash Analysis |
+| 7 | **Weekly Seasonal Pattern** | `ts4_weekly_seasonal_pattern.png` | Time Series EDA |
+| 8 | **Monthly Trend Analysis** | `ts5_monthly_trend_analysis.png` | Time Series EDA |
+| 9 | **Cumulative Cash Flow** | `ts6_cumulative_cash_flow.png` | Time Series EDA |
+| 10 | **Weekend vs Weekday** | `ts7_weekend_vs_weekday.png` | Time Series EDA |
+| 11 | **Daily Distribution Analysis** | `ts8_daily_distribution_analysis.png` | Time Series EDA |
 
 ### Key EDA Findings
 
@@ -212,16 +227,22 @@ Generated **8 key visualizations** providing business insights:
 - **Highest Activity Branch:** **Branch 104** (46,090M in withdrawals)
 - **Avg Transaction:** Withdrawal = 4.1M, Deposit = 3.98M
 - **DR vs CR Correlation:** 0.4310 (moderate positive correlation)
+- **Daily Avg Net Cash:** -15.45M (deficit trend)
+- **Total Days Analyzed:** 668 (2024-01-02 to 2026-04-04)
 
 ---
 
 ## Deliverables
 
 - ✅ Clean Dataset (`Bank DataSet/cleaned_bank_data.csv`)
+- ✅ Daily Merged Dataset (`Bank DataSet/daily_merged_data.csv`)
 - ✅ Data Dictionary (generated in `phase1_data_preparation.py`)
-- ✅ **EDA Report** (8 visualizations + summary in `Bank DataSet/eda_plots/`)
-- ✅ **EDA Script** (`Bank Project/phase1_eda.py`)
-- Feature Summary
+- ✅ **EDA Reports** (visualizations in `Bank DataSet/eda_plots/`)
+- ✅ **Phase 1 EDA Script** (`Bank Project/phase1_eda.py`)
+- ✅ **Phase 2 Cash Analysis Script** (`Bank Project/phase2_cash_analysis.py`)
+- ✅ **Daily Merge & Time Series Script** (`Bank Project/daily_merge_and_timeseries_eda.py`)
+- ✅ **Combined EDA Script** (`Bank Project/eda.py`) — Unified 11-graph analysis
+- ⬜ Feature Summary
 
 ---
 
@@ -515,7 +536,9 @@ Business Reports / Dashboard
 
 | Phase | Description | Deliverable | Status |
 |--------|-------------|-------------|--------|
-| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA Report + 8 Visualizations | ✅ Completed |
+| Phase 1 | Data Understanding & Preparation | Clean Dataset + EDA Report + Visualizations | ✅ Completed |
+| Phase 1b | Time Series & Cash Analysis | Daily Merge + 10 Time Series Plots + 5 Cash Analysis Plots | ✅ Completed |
+| Phase 1c | Combined EDA Consolidation | Unified eda.py with 11 Selected Graphs | ✅ Completed |
 | Phase 2 | Feature Engineering & Model Development | Best Forecast Model | ⬜ Not Started |
 | Phase 3 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
 
