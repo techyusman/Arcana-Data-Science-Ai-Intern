@@ -540,7 +540,9 @@ Business Reports / Dashboard
 | Phase 1b | Time Series & Cash Analysis | Daily Merge + 10 Time Series Plots + 5 Cash Analysis Plots | ✅ Completed |
 | Phase 1c | Combined EDA Consolidation | Unified eda.py with 11 Selected Graphs | ✅ Completed |
 | Phase 2 | Feature Engineering & Model Development | Feature-Engineered Dataset + Baseline Metrics | ✅ Completed |
-| Phase 3 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
+| Phase 2b | Corrected Feature Engineering Pipeline | Corrected model-ready data, branch coverage, missing-combination analysis, baseline metrics (MAE/RMSE/WAPE/Underforecast), feature dictionary, validation report | ✅ Completed |
+| Phase 3 | Model Development & Evaluation | 7 models (LR, Ridge, Lasso, RF, GBR, XGBoost, LightGBM) × 4 targets, model metrics, feature importance, prediction outputs, comparison plots | ✅ Completed |
+| Phase 4 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
 
 ---
 
