@@ -1,0 +1,1302 @@
+{
+  "tran_br_code": {
+    "dtype": "int64",
+    "category": "identifier",
+    "description": "Unique tran br code",
+    "unique_values": 15,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "104",
+      "104",
+      "104"
+    ]
+  },
+  "start_date": {
+    "dtype": "datetime64[ns]",
+    "category": "identifier",
+    "description": "Unique start date",
+    "unique_values": 792,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "2024-01-30 00:00:00",
+      "2024-01-31 00:00:00",
+      "2024-02-01 00:00:00"
+    ]
+  },
+  "year": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar year",
+    "unique_values": 3,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "2024",
+      "2024",
+      "2024"
+    ]
+  },
+  "month": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar month",
+    "unique_values": 12,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "1",
+      "1",
+      "2"
+    ]
+  },
+  "day": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar day",
+    "unique_values": 31,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "30",
+      "31",
+      "1"
+    ]
+  },
+  "dayofweek": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar dayofweek",
+    "unique_values": 7,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  "dayofyear": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar dayofyear",
+    "unique_values": 366,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "30",
+      "31",
+      "32"
+    ]
+  },
+  "weekofyear": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Calendar weekofyear",
+    "unique_values": 52,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "5",
+      "5",
+      "5"
+    ]
+  },
+  "quarter": {
+    "dtype": "int32",
+    "category": "calendar_feature",
+    "description": "Calendar quarter",
+    "unique_values": 4,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "1",
+      "1",
+      "1"
+    ]
+  },
+  "is_weekend": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Boolean flag: weekend",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "is_month_start": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Boolean flag: month start",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0",
+      "0",
+      "1"
+    ]
+  },
+  "is_month_end": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Boolean flag: month end",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0",
+      "1",
+      "0"
+    ]
+  },
+  "is_quarter_start": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Boolean flag: quarter start",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "is_quarter_end": {
+    "dtype": "int64",
+    "category": "calendar_feature",
+    "description": "Boolean flag: quarter end",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "month_sin": {
+    "dtype": "float64",
+    "category": "cyclical_feature",
+    "description": "Cyclical encoding of month (month_sin, period=12)",
+    "unique_values": 11,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.49999999999999994",
+      "0.49999999999999994",
+      "0.8660254037844386"
+    ]
+  },
+  "month_cos": {
+    "dtype": "float64",
+    "category": "cyclical_feature",
+    "description": "Cyclical encoding of month (month_cos, period=12)",
+    "unique_values": 11,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.8660254037844387",
+      "0.8660254037844387",
+      "0.5000000000000001"
+    ]
+  },
+  "dayofweek_sin": {
+    "dtype": "float64",
+    "category": "cyclical_feature",
+    "description": "Cyclical encoding of dayofweek (dayofweek_sin, period=7)",
+    "unique_values": 7,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.7818314824680298",
+      "0.9749279121818236",
+      "0.43388373911755823"
+    ]
+  },
+  "dayofweek_cos": {
+    "dtype": "float64",
+    "category": "cyclical_feature",
+    "description": "Cyclical encoding of dayofweek (dayofweek_cos, period=7)",
+    "unique_values": 7,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.6234898018587336",
+      "-0.22252093395631434",
+      "-0.900968867902419"
+    ]
+  },
+  "daily_withdrawals": {
+    "dtype": "float64",
+    "category": "target",
+    "description": "Daily daily withdrawals (target variable)",
+    "unique_values": 8654,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "91592247.0",
+      "88999827.0",
+      "90774578.0"
+    ]
+  },
+  "daily_deposits": {
+    "dtype": "float64",
+    "category": "target",
+    "description": "Daily daily deposits (target variable)",
+    "unique_values": 8669,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "59461773.5",
+      "66739217.5",
+      "79479647.5"
+    ]
+  },
+  "net_cash": {
+    "dtype": "float64",
+    "category": "target",
+    "description": "Daily net cash (derived target variable)",
+    "unique_values": 8668,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "-32130473.5",
+      "-22260609.5",
+      "-11294930.5"
+    ]
+  },
+  "cash_requirement": {
+    "dtype": "float64",
+    "category": "target",
+    "description": "Daily cash requirement (derived target variable)",
+    "unique_values": 4611,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "32130473.5",
+      "22260609.5",
+      "11294930.5"
+    ]
+  },
+  "transaction_count": {
+    "dtype": "float64",
+    "category": "current_day_predictor",
+    "description": "Current-day transaction count (excluded from model predictors)",
+    "unique_values": 14,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "12.0",
+      "11.0",
+      "11.0"
+    ]
+  },
+  "active_hour_count": {
+    "dtype": "float64",
+    "category": "current_day_predictor",
+    "description": "Current-day active hour count (excluded from model predictors)",
+    "unique_values": 14,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "12.0",
+      "11.0",
+      "11.0"
+    ]
+  },
+  "daily_withdrawals_1d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "1-day lag of daily_withdrawals (exact calendar day)",
+    "unique_values": 8654,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "91051052.0",
+      "91592247.0",
+      "88999827.0"
+    ]
+  },
+  "daily_deposits_1d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "1-day lag of daily_deposits (exact calendar day)",
+    "unique_values": 8669,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "74807253.5",
+      "59461773.5",
+      "66739217.5"
+    ]
+  },
+  "net_cash_1d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "1-day lag of net_cash (exact calendar day)",
+    "unique_values": 8668,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "-16243798.5",
+      "-32130473.5",
+      "-22260609.5"
+    ]
+  },
+  "cash_requirement_1d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "1-day lag of cash_requirement (exact calendar day)",
+    "unique_values": 4611,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "16243798.5",
+      "32130473.5",
+      "22260609.5"
+    ]
+  },
+  "daily_withdrawals_7d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "7-day lag of daily_withdrawals (exact calendar day)",
+    "unique_values": 8648,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "83001735.0",
+      "49788112.0",
+      "75713291.0"
+    ]
+  },
+  "daily_deposits_7d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "7-day lag of daily_deposits (exact calendar day)",
+    "unique_values": 8664,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "72106005.0",
+      "49087520.0",
+      "77456598.5"
+    ]
+  },
+  "net_cash_7d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "7-day lag of net_cash (exact calendar day)",
+    "unique_values": 8663,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "-10895730.0",
+      "-700592.0",
+      "1743307.5"
+    ]
+  },
+  "cash_requirement_7d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "7-day lag of cash_requirement (exact calendar day)",
+    "unique_values": 4607,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "10895730.0",
+      "700592.0",
+      "0.0"
+    ]
+  },
+  "daily_withdrawals_14d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "14-day lag of daily_withdrawals (exact calendar day)",
+    "unique_values": 8680,
+    "missing_count": 3183,
+    "missing_pct": 26.79,
+    "sample_values": [
+      "72099084.0",
+      "71624409.0",
+      "64525202.0"
+    ]
+  },
+  "daily_deposits_14d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "14-day lag of daily_deposits (exact calendar day)",
+    "unique_values": 8696,
+    "missing_count": 3183,
+    "missing_pct": 26.79,
+    "sample_values": [
+      "72595324.0",
+      "61004970.5",
+      "65640448.0"
+    ]
+  },
+  "net_cash_14d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "14-day lag of net_cash (exact calendar day)",
+    "unique_values": 8695,
+    "missing_count": 3183,
+    "missing_pct": 26.79,
+    "sample_values": [
+      "496240.0",
+      "-10619438.5",
+      "1115246.0"
+    ]
+  },
+  "cash_requirement_14d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "14-day lag of cash_requirement (exact calendar day)",
+    "unique_values": 4610,
+    "missing_count": 3183,
+    "missing_pct": 26.79,
+    "sample_values": [
+      "0.0",
+      "10619438.5",
+      "0.0"
+    ]
+  },
+  "daily_withdrawals_28d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "28-day lag of daily_withdrawals (exact calendar day)",
+    "unique_values": 8672,
+    "missing_count": 3191,
+    "missing_pct": 26.86,
+    "sample_values": [
+      "135714688.0",
+      "74435433.0",
+      "79231326.0"
+    ]
+  },
+  "daily_deposits_28d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "28-day lag of daily_deposits (exact calendar day)",
+    "unique_values": 8688,
+    "missing_count": 3191,
+    "missing_pct": 26.86,
+    "sample_values": [
+      "109897526.5",
+      "70946266.5",
+      "76980140.0"
+    ]
+  },
+  "net_cash_28d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "28-day lag of net_cash (exact calendar day)",
+    "unique_values": 8687,
+    "missing_count": 3191,
+    "missing_pct": 26.86,
+    "sample_values": [
+      "-25817161.5",
+      "-3489166.5",
+      "-2251186.0"
+    ]
+  },
+  "cash_requirement_28d_lag": {
+    "dtype": "float64",
+    "category": "lag_feature",
+    "description": "28-day lag of cash_requirement (exact calendar day)",
+    "unique_values": 4596,
+    "missing_count": 3191,
+    "missing_pct": 26.86,
+    "sample_values": [
+      "25817161.5",
+      "3489166.5",
+      "2251186.0"
+    ]
+  },
+  "daily_withdrawals_7d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling mean of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 9332,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "65716823.0",
+      "67148575.0",
+      "73683860.83333333"
+    ]
+  },
+  "daily_withdrawals_7d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling std of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 9333,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "23940984.34016023",
+      "25394186.568874363",
+      "25076504.26326176"
+    ]
+  },
+  "daily_withdrawals_7d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling min of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 2697,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26176147.0",
+      "26176147.0",
+      "26176147.0"
+    ]
+  },
+  "daily_withdrawals_7d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling max of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 2760,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "91051052.0",
+      "91592247.0",
+      "91592247.0"
+    ]
+  },
+  "daily_deposits_7d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling mean of daily_deposits (shifted, no leakage)",
+    "unique_values": 9332,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "61623637.083333336",
+      "59516265.166666664",
+      "62458214.75"
+    ]
+  },
+  "daily_deposits_7d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling std of daily_deposits (shifted, no leakage)",
+    "unique_values": 9333,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "19980171.238974802",
+      "19308980.979510166",
+      "18738546.597260464"
+    ]
+  },
+  "daily_deposits_7d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling min of daily_deposits (shifted, no leakage)",
+    "unique_values": 2663,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26451044.0",
+      "26451044.0",
+      "26451044.0"
+    ]
+  },
+  "daily_deposits_7d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling max of daily_deposits (shifted, no leakage)",
+    "unique_values": 2722,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "77456598.5",
+      "77456598.5",
+      "77456598.5"
+    ]
+  },
+  "net_cash_7d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling mean of net_cash (shifted, no leakage)",
+    "unique_values": 9333,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-4093185.9166666665",
+      "-7632309.833333333",
+      "-11225646.083333334"
+    ]
+  },
+  "net_cash_7d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling std of net_cash (shifted, no leakage)",
+    "unique_values": 9333,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "7579618.458795162",
+      "13797938.834074123",
+      "14424850.965800084"
+    ]
+  },
+  "net_cash_7d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling min of net_cash (shifted, no leakage)",
+    "unique_values": 2692,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-16243798.5",
+      "-32130473.5",
+      "-32130473.5"
+    ]
+  },
+  "net_cash_7d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling max of net_cash (shifted, no leakage)",
+    "unique_values": 2775,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "1743307.5",
+      "1743307.5",
+      "1743307.5"
+    ]
+  },
+  "cash_requirement_7d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling mean of cash_requirement (shifted, no leakage)",
+    "unique_values": 7260,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "4640020.083333333",
+      "8179144.0",
+      "11772480.25"
+    ]
+  },
+  "cash_requirement_7d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling std of cash_requirement (shifted, no leakage)",
+    "unique_values": 7285,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "7125868.829125979",
+      "13381545.252749044",
+      "13857960.202962443"
+    ]
+  },
+  "cash_requirement_7d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling min of cash_requirement (shifted, no leakage)",
+    "unique_values": 289,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.0",
+      "0.0",
+      "0.0"
+    ]
+  },
+  "cash_requirement_7d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "7-day rolling max of cash_requirement (shifted, no leakage)",
+    "unique_values": 2592,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "16243798.5",
+      "32130473.5",
+      "32130473.5"
+    ]
+  },
+  "daily_withdrawals_14d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling mean of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "67820379.25",
+      "69444809.5",
+      "70892761.0"
+    ]
+  },
+  "daily_withdrawals_14d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling std of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "23051934.726484258",
+      "24046239.054476682",
+      "24703564.395381037"
+    ]
+  },
+  "daily_withdrawals_14d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling min of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 1532,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26176147.0",
+      "26176147.0",
+      "26176147.0"
+    ]
+  },
+  "daily_withdrawals_14d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling max of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 1579,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "99179650.0",
+      "99179650.0",
+      "99179650.0"
+    ]
+  },
+  "daily_deposits_14d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling mean of daily_deposits (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "64612303.0",
+      "63517840.458333336",
+      "63995694.375"
+    ]
+  },
+  "daily_deposits_14d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling std of daily_deposits (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "16893750.025933024",
+      "16754407.398728969",
+      "16757995.27589856"
+    ]
+  },
+  "daily_deposits_14d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling min of daily_deposits (shifted, no leakage)",
+    "unique_values": 1515,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26451044.0",
+      "26451044.0",
+      "26451044.0"
+    ]
+  },
+  "daily_deposits_14d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling max of daily_deposits (shifted, no leakage)",
+    "unique_values": 1564,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "81474153.0",
+      "81474153.0",
+      "81474153.0"
+    ]
+  },
+  "net_cash_14d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling mean of net_cash (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-3208076.25",
+      "-5926969.041666667",
+      "-6897066.625"
+    ]
+  },
+  "net_cash_14d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling std of net_cash (shifted, no leakage)",
+    "unique_values": 9338,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "9373979.386272592",
+      "12434047.657112407",
+      "13260112.510434547"
+    ]
+  },
+  "net_cash_14d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling min of net_cash (shifted, no leakage)",
+    "unique_values": 1479,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-17783640.0",
+      "-32130473.5",
+      "-32130473.5"
+    ]
+  },
+  "net_cash_14d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling max of net_cash (shifted, no leakage)",
+    "unique_values": 1533,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "16152609.0",
+      "16152609.0",
+      "16152609.0"
+    ]
+  },
+  "cash_requirement_14d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling mean of cash_requirement (shifted, no leakage)",
+    "unique_values": 7341,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "4961834.583333333",
+      "7639374.041666667",
+      "8609471.625"
+    ]
+  },
+  "cash_requirement_14d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling std of cash_requirement (shifted, no leakage)",
+    "unique_values": 7351,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "6925208.461649712",
+      "10247075.689949175",
+      "11072631.42104299"
+    ]
+  },
+  "cash_requirement_14d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling min of cash_requirement (shifted, no leakage)",
+    "unique_values": 30,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.0",
+      "0.0",
+      "0.0"
+    ]
+  },
+  "cash_requirement_14d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "14-day rolling max of cash_requirement (shifted, no leakage)",
+    "unique_values": 1479,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "17783640.0",
+      "32130473.5",
+      "32130473.5"
+    ]
+  },
+  "daily_withdrawals_30d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling mean of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "77782166.20833333",
+      "78334569.44",
+      "78744771.65384616"
+    ]
+  },
+  "daily_withdrawals_30d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling std of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "27090633.712647498",
+      "26663681.292887762",
+      "26208562.271660317"
+    ]
+  },
+  "daily_withdrawals_30d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling min of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 750,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26176147.0",
+      "26176147.0",
+      "26176147.0"
+    ]
+  },
+  "daily_withdrawals_30d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling max of daily_withdrawals (shifted, no leakage)",
+    "unique_values": 772,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "135714688.0",
+      "135714688.0",
+      "135714688.0"
+    ]
+  },
+  "daily_deposits_30d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling mean of daily_deposits (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "71901775.125",
+      "71404175.06",
+      "71224753.61538461"
+    ]
+  },
+  "daily_deposits_30d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling std of daily_deposits (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "23530271.887793418",
+      "23168817.48027478",
+      "22719140.228481345"
+    ]
+  },
+  "daily_deposits_30d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling min of daily_deposits (shifted, no leakage)",
+    "unique_values": 788,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "26451044.0",
+      "26451044.0",
+      "26451044.0"
+    ]
+  },
+  "daily_deposits_30d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling max of daily_deposits (shifted, no leakage)",
+    "unique_values": 768,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "109897526.5",
+      "109897526.5",
+      "109897526.5"
+    ]
+  },
+  "net_cash_30d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling mean of net_cash (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-5880391.083333333",
+      "-6930394.38",
+      "-7520018.038461538"
+    ]
+  },
+  "net_cash_30d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling std of net_cash (shifted, no leakage)",
+    "unique_values": 11534,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "11285618.338958751",
+      "12231965.16566548",
+      "12356180.25384659"
+    ]
+  },
+  "net_cash_30d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling min of net_cash (shifted, no leakage)",
+    "unique_values": 771,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-38659485.5",
+      "-38659485.5",
+      "-38659485.5"
+    ]
+  },
+  "net_cash_30d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling max of net_cash (shifted, no leakage)",
+    "unique_values": 765,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "16152609.0",
+      "16152609.0",
+      "16152609.0"
+    ]
+  },
+  "cash_requirement_30d_rolling_mean": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling mean of cash_requirement (shifted, no leakage)",
+    "unique_values": 9830,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "7015740.166666667",
+      "8020329.5",
+      "8568032.576923076"
+    ]
+  },
+  "cash_requirement_30d_rolling_std": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling std of cash_requirement (shifted, no leakage)",
+    "unique_values": 9834,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "9981415.7864968",
+      "10986694.68523101",
+      "11121088.38533667"
+    ]
+  },
+  "cash_requirement_30d_rolling_min": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling min of cash_requirement (shifted, no leakage)",
+    "unique_values": 2,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "0.0",
+      "0.0",
+      "0.0"
+    ]
+  },
+  "cash_requirement_30d_rolling_max": {
+    "dtype": "float64",
+    "category": "rolling_feature",
+    "description": "30-day rolling max of cash_requirement (shifted, no leakage)",
+    "unique_values": 771,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "38659485.5",
+      "38659485.5",
+      "38659485.5"
+    ]
+  },
+  "daily_withdrawals_prev_day_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily withdrawals prev day",
+    "unique_values": 8654,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "91051052.0",
+      "91592247.0",
+      "88999827.0"
+    ]
+  },
+  "daily_withdrawals_prev_week_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily withdrawals prev week",
+    "unique_values": 8648,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "83001735.0",
+      "49788112.0",
+      "75713291.0"
+    ]
+  },
+  "daily_withdrawals_roll7_avg_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily withdrawals roll7 avg",
+    "unique_values": 9332,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "65716823.0",
+      "67148575.0",
+      "73683860.83333333"
+    ]
+  },
+  "daily_deposits_prev_day_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily deposits prev day",
+    "unique_values": 8669,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "74807253.5",
+      "59461773.5",
+      "66739217.5"
+    ]
+  },
+  "daily_deposits_prev_week_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily deposits prev week",
+    "unique_values": 8664,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "72106005.0",
+      "49087520.0",
+      "77456598.5"
+    ]
+  },
+  "daily_deposits_roll7_avg_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: daily deposits roll7 avg",
+    "unique_values": 9332,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "61623637.083333336",
+      "59516265.166666664",
+      "62458214.75"
+    ]
+  },
+  "net_cash_prev_day_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: net cash prev day",
+    "unique_values": 8668,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "-16243798.5",
+      "-32130473.5",
+      "-22260609.5"
+    ]
+  },
+  "net_cash_prev_week_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: net cash prev week",
+    "unique_values": 8663,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "-10895730.0",
+      "-700592.0",
+      "1743307.5"
+    ]
+  },
+  "net_cash_roll7_avg_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: net cash roll7 avg",
+    "unique_values": 9333,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "-4093185.9166666665",
+      "-7632309.833333333",
+      "-11225646.083333334"
+    ]
+  },
+  "cash_requirement_prev_day_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: cash requirement prev day",
+    "unique_values": 4611,
+    "missing_count": 3210,
+    "missing_pct": 27.02,
+    "sample_values": [
+      "16243798.5",
+      "32130473.5",
+      "22260609.5"
+    ]
+  },
+  "cash_requirement_prev_week_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: cash requirement prev week",
+    "unique_values": 4607,
+    "missing_count": 3215,
+    "missing_pct": 27.06,
+    "sample_values": [
+      "10895730.0",
+      "700592.0",
+      "0.0"
+    ]
+  },
+  "cash_requirement_roll7_avg_baseline": {
+    "dtype": "float64",
+    "category": "baseline",
+    "description": "Baseline prediction: cash requirement roll7 avg",
+    "unique_values": 7260,
+    "missing_count": 0,
+    "missing_pct": 0.0,
+    "sample_values": [
+      "4640020.083333333",
+      "8179144.0",
+      "11772480.25"
+    ]
+  }
+}
