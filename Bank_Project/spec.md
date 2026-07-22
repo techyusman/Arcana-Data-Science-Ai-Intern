@@ -6,7 +6,7 @@
 **Domain:** Banking  
 **Prepared By:** Muhammad Usman  
 **Status:** In Progress  
-**Last Updated:** July 17, 2026
+**Last Updated:** July 20, 2026
 
 ---
 
@@ -542,10 +542,68 @@ Business Reports / Dashboard
 | Phase 2 | Feature Engineering & Model Development | Feature-Engineered Dataset + Baseline Metrics | ✅ Completed |
 | Phase 2b | Corrected Feature Engineering Pipeline | Corrected model-ready data, branch coverage, missing-combination analysis, baseline metrics (MAE/RMSE/WAPE/Underforecast), feature dictionary, validation report | ✅ Completed |
 | Phase 3 | Model Development & Evaluation | 7 models (LR, Ridge, Lasso, RF, GBR, XGBoost, LightGBM) × 4 targets, model metrics, feature importance, prediction outputs, comparison plots | ✅ Completed |
-| Phase 4 | Forecasting & Decision Support | Business Reports + Dashboard | ⬜ Not Started |
+| Phase 4 | Model Development & Evaluation | 7 trained models per target, model metrics, feature importance, predictions, comparison plots | ✅ Completed |
+| Phase 4b | Expanded Model Development (Phase4) | Full model evaluation with Linear, Ridge, Lasso, RF, GBR, XGBoost, LightGBM; model artifacts, predictions, plots | ✅ Completed |
+| Phase 5 | Model Validation, XAI & Streamlit Dashboard | Final tuned Ridge/Lasso/LR models, expanding-window CV, SHAP/coefficient explanations, branch-level XAI, Streamlit UI with forecasts/risk/charts/download | ✅ Completed |
 
 ---
 
-# 15. Conclusion
+# 15. Phase 5 — Model Validation, XAI & Streamlit Dashboard
+
+## Goal
+
+Validate and tune shortlisted models (Ridge, Lasso, Linear Regression) using chronological expanding-window validation, explain predictions with SHAP and coefficient analysis, and deliver an interactive Streamlit dashboard.
+
+---
+
+## Objectives
+
+- Load Phase 3/4 artifacts and validate feature consistency, scaling, encoding, missing values, and target leakage
+- Tune Ridge, Lasso, and Linear Regression hyperparameters using expanding-window time-series cross-validation
+- Compare direct forecasts vs derived forecasts (net cash = deposits − withdrawals; cash requirement = max(withdrawals − deposits, 0))
+- Evaluate by target, branch, weekday, and deficit days using MAE, RMSE, WAPE, and underforecasting rate
+- Select best model per target on validation, retrain on train+validation, and evaluate on untouched test set against 7-day baseline
+- Generate comprehensive Explainable AI with coefficient analysis, SHAP global/local explanations, positive/negative contributions, and branch-level importance
+- Build Streamlit dashboard with forecasts, shortage-risk status, safety buffer, charts, metrics, XAI, and CSV download
+- Save final models, pipelines, predictions, metrics, XAI results, plots, and validation report
+
+## Key Implementation Details
+
+### File
+`Bank_Project/phase5_model_validation_xai_streamlit.py`
+
+### Usage
+
+**Run full pipeline (headless):**
+```bash
+python Bank_Project/phase5_model_validation_xai_streamlit.py
+```
+
+**Launch Streamlit dashboard:**
+```bash
+streamlit run Bank_Project/phase5_model_validation_xai_streamlit.py
+```
+
+Run the pipeline first to generate saved models/pipelines, then launch the dashboard.
+
+### Pipeline Outputs
+All outputs save to `Bank DataSet/phase5_output/`:
+- `final_models/` — Final Ridge/Lasso/LinearRegression models per target
+- `pipelines/` — Preprocessing pipeline metadata and feature order
+- `predictions/` — Train/val/test predictions CSV
+- `metrics/` — Test metrics, tuning results, direct-vs-derived comparison
+- `branch_metrics/` — Per-branch evaluation metrics per target
+- `xai_results/` — Coefficient analysis, SHAP results, branch-level explanations (JSON)
+- `plots/` — Test set comparison, branch-level MAE, weekday patterns
+- `validation_report.json` — Comprehensive validation report
+
+### Important Notes
+- All SHAP explanations show **associations, not causation**.
+- No confidential raw data is exposed in logs or the dashboard.
+- The dashboard loads saved preprocessing pipelines and final models — transformations are not recreated on the fly.
+
+---
+
+# 16. Conclusion
 
 This project aims to modernize branch cash management by leveraging data science and machine learning techniques. By accurately forecasting branch-level cash inflows and outflows, the system will enable banks to optimize cash distribution, minimize operational costs, improve liquidity management, and enhance customer service through proactive cash planning.
