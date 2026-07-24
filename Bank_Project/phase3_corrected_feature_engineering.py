@@ -51,8 +51,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 # =============================================================================
 
 # --- File Paths ---
-INPUT_PATH = "Bank DataSet/cleaned_bank_data.csv"
-OUTPUT_DIR = "Bank DataSet"
+INPUT_PATH = "../Bank DataSet/cleaned_bank_data.csv"
+OUTPUT_DIR = "../Bank DataSet"
 
 # --- Output Files ---
 DAILY_AGGREGATED_PATH = os.path.join(OUTPUT_DIR, "daily_aggregated.csv")
@@ -64,8 +64,8 @@ BRANCH_COVERAGE_PATH = os.path.join(OUTPUT_DIR, "branch_coverage.csv")
 FEATURE_DICT_PATH = os.path.join(OUTPUT_DIR, "feature_dictionary.json")
 
 # --- Feature Engineering Parameters ---
-LAG_WINDOWS = [1, 7, 14, 28]           # Days for lag features (exact calendar days)
-ROLLING_WINDOWS = [7, 14, 30]           # Days for rolling statistics
+LAG_WINDOWS = [1, 7, 14, 28]             # Periods (days) for lag features
+ROLLING_WINDOWS = [7, 14, 30]            # Periods (days) for rolling statistics
 
 # --- Train / Validation / Test Splits (chronological) ---
 TRAIN_SPLIT_DATE = "2025-06-01"         # Train: up to this date (exclusive)
@@ -154,7 +154,7 @@ def load_and_validate_input(file_path: str) -> pd.DataFrame:
 
 def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Aggregate hourly transaction data to daily level per branch.
+    Aggregate hourly transaction data to half-daily level per branch (AM/PM).
 
     Aggregations:
         - TOTAL_DR → sum → daily_withdrawals
@@ -167,13 +167,14 @@ def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: Daily aggregated data with columns:
-            tran_br_code, start_date, daily_withdrawals, daily_deposits,
+            tran_br_code, start_date, , daily_withdrawals, daily_deposits,
             transaction_count, active_hour_count
     """
     print("\n" + "=" * 70)
     print("MODULE 2: DAILY AGGREGATION")
     print("=" * 70)
 
+    # Create AM/PM indicator
     daily = df.groupby(['tran_br_code', 'start_date'], as_index=False).agg(
         daily_withdrawals=('TOTAL_DR', 'sum'),
         daily_deposits=('TOTAL_CR', 'sum'),
@@ -187,7 +188,7 @@ def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
 
     daily = daily.sort_values(['tran_br_code', 'start_date']).reset_index(drop=True)
 
-    print(f"✓ Aggregated to daily level")
+    print(f"✓ Aggregated to half-daily level")
     print(f"  Shape: {daily.shape[0]} rows × {daily.shape[1]} columns")
     print(f"  Unique branches: {daily['tran_br_code'].nunique()}")
     print(f"  Unique dates: {daily['start_date'].nunique()}")
@@ -201,7 +202,7 @@ def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
 
 def generate_targets(daily: pd.DataFrame) -> pd.DataFrame:
     """
-    Generate target variables from daily aggregates.
+    Generate target variables from half-daily aggregates.
 
     Targets:
         - net_cash = daily_deposits - daily_withdrawals
@@ -315,12 +316,13 @@ def build_complete_grid(df: pd.DataFrame) -> pd.DataFrame:
     print("MODULE 5: BUILD COMPLETE BRANCH-DATE GRID")
     print("=" * 70)
 
-    branches = sorted(df['tran_br_code'].unique())
+    # Find full date range
     min_date = df['start_date'].min()
     max_date = df['start_date'].max()
     all_dates = pd.date_range(start=min_date, end=max_date, freq='D')
+    branches = df['tran_br_code'].unique()
 
-    print(f"  Branches: {len(branches)} ({branches[0]}...{branches[-1]})")
+    print(f"  Branches: {len(branches)} ({branches.min()}...{branches.max()})")
     print(f"  Date range: {min_date.date()} to {max_date.date()}")
     print(f"  Total calendar dates: {len(all_dates)}")
     print(f"  Expected combinations: {len(branches) * len(all_dates)}")
@@ -409,7 +411,7 @@ def analyze_missing_combinations(grid_df: pd.DataFrame) -> pd.DataFrame:
     # --- Compute expected vs observed ---
     branches = sorted(grid_df['tran_br_code'].unique())
     all_dates = sorted(grid_df['start_date'].unique())
-    total_expected = len(branches) * len(all_dates)
+    total_expected = len(branches) * len(all_dates) * 2
     total_observed = grid_df['daily_withdrawals'].notna().sum()
     total_missing = len(missing_df)
 
@@ -464,14 +466,12 @@ def generate_calendar_aligned_lags(grid_df: pd.DataFrame, lag_windows: List[int]
     shift(n) gives EXACTLY the value from n calendar days ago, not n rows ago.
 
     Lag features generated for:
-        - daily_withdrawals_{window}d_lag
-        - daily_deposits_{window}d_lag
-        - net_cash_{window}d_lag
-        - cash_requirement_{window}d_lag
+        - daily_withdrawals_{window}p_lag
+        - daily_deposits_{window}p_lag
 
     Parameters:
         grid_df (pd.DataFrame): Complete branch-date grid with targets.
-        lag_windows (list[int]): List of lag periods in days.
+        lag_windows (list[int]): List of lag periods in half-days.
 
     Returns:
         pd.DataFrame: Grid with calendar-aligned lag features added.
@@ -482,19 +482,19 @@ def generate_calendar_aligned_lags(grid_df: pd.DataFrame, lag_windows: List[int]
     print("\n" + "=" * 70)
     print("MODULE 7: CALENDAR-ALIGNED LAG FEATURES")
     print("=" * 70)
-    print("  Using complete branch-date grid → shift(n) = exactly n calendar days ago")
-    print(f"  Lag windows (days): {lag_windows}")
+    print("  Using complete branch-date-period grid → shift(n) = exactly n periods ago")
+    print(f"  Lag windows (periods): {lag_windows}")
 
     result = grid_df.copy()
     result = result.sort_values(['tran_br_code', 'start_date']).reset_index(drop=True)
 
-    targets = ['daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement']
+    targets = ['daily_withdrawals', 'daily_deposits']
     lag_count = 0
 
     for window in lag_windows:
         for target in targets:
-            col_name = f'{target}_{window}d_lag'
-            # shift on the COMPLETE grid = exact calendar day lag
+            col_name = f'{target}_{window}p_lag'
+            # shift on the COMPLETE grid = exact period lag
             result[col_name] = result.groupby('tran_br_code')[target].shift(window)
             lag_count += 1
 
@@ -502,16 +502,16 @@ def generate_calendar_aligned_lags(grid_df: pd.DataFrame, lag_windows: List[int]
     print(f"  ({len(lag_windows)} windows × {len(targets)} targets)")
 
     # Verify calendar alignment with assertions
-    print(f"\n  --- Calendar Alignment Verification ---")
+    print(f"\n  --- Period Alignment Verification ---")
     for window in lag_windows:
         sample_branch = result['tran_br_code'].iloc[0]
-        branch_data = result[result['tran_br_code'] == sample_branch].dropna(subset=[f'daily_withdrawals_{window}d_lag'])
+        branch_data = result[result['tran_br_code'] == sample_branch].dropna(subset=[f'daily_withdrawals_{window}p_lag'])
         if len(branch_data) > 0:
             sample_row = branch_data.iloc[0]
-            lag_col = f'daily_withdrawals_{window}d_lag'
+            lag_col = f'daily_withdrawals_{window}p_lag'
             actual_date = sample_row['start_date']
-            # The lag value should correspond to a date exactly `window` days before
-            print(f"  ✓ {window}d lag: shift({window}) on complete grid = exact calendar days")
+            # The lag value should correspond to a period exactly `window` periods before
+            print(f"  ✓ {window}p lag: shift({window}) on complete grid = exact periods")
 
     return result
 
@@ -528,14 +528,14 @@ def generate_rolling_features(grid_df: pd.DataFrame, rolling_windows: List[int] 
     so they only contain information from strictly prior dates.
 
     Rolling features generated for each window:
-        - {target}_{window}d_rolling_mean
-        - {target}_{window}d_rolling_std
-        - {target}_{window}d_rolling_min
-        - {target}_{window}d_rolling_max
+        - {target}_{window}p_rolling_mean
+        - {target}_{window}p_rolling_std
+        - {target}_{window}p_rolling_min
+        - {target}_{window}p_rolling_max
 
     Parameters:
         grid_df (pd.DataFrame): Complete grid with targets and lags.
-        rolling_windows (list[int]): List of rolling window sizes in days.
+        rolling_windows (list[int]): List of rolling window sizes in periods.
 
     Returns:
         pd.DataFrame: Grid with rolling features added.
@@ -547,12 +547,12 @@ def generate_rolling_features(grid_df: pd.DataFrame, rolling_windows: List[int] 
     print("MODULE 8: ROLLING STATISTICS (Leakage-Protected)")
     print("=" * 70)
     print("  All rolling stats use shift(1) → only prior data, no leakage")
-    print(f"  Rolling windows (days): {rolling_windows}")
+    print(f"  Rolling windows (periods): {rolling_windows}")
 
     result = grid_df.copy()
     result = result.sort_values(['tran_br_code', 'start_date']).reset_index(drop=True)
 
-    targets = ['daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement']
+    targets = ['daily_withdrawals', 'daily_deposits']
     rolling_count = 0
 
     for window in rolling_windows:
@@ -560,22 +560,22 @@ def generate_rolling_features(grid_df: pd.DataFrame, rolling_windows: List[int] 
             grouped = result.groupby('tran_br_code')[target]
 
             # Rolling mean — shift by 1 to prevent leakage (uses data up to t-1)
-            result[f'{target}_{window}d_rolling_mean'] = (
+            result[f'{target}_{window}p_rolling_mean'] = (
                 grouped.transform(lambda x: x.rolling(window, min_periods=1).mean().shift(1))
             )
 
             # Rolling std
-            result[f'{target}_{window}d_rolling_std'] = (
+            result[f'{target}_{window}p_rolling_std'] = (
                 grouped.transform(lambda x: x.rolling(window, min_periods=1).std().shift(1))
             )
 
             # Rolling min
-            result[f'{target}_{window}d_rolling_min'] = (
+            result[f'{target}_{window}p_rolling_min'] = (
                 grouped.transform(lambda x: x.rolling(window, min_periods=1).min().shift(1))
             )
 
             # Rolling max
-            result[f'{target}_{window}d_rolling_max'] = (
+            result[f'{target}_{window}p_rolling_max'] = (
                 grouped.transform(lambda x: x.rolling(window, min_periods=1).max().shift(1))
             )
 
@@ -587,12 +587,12 @@ def generate_rolling_features(grid_df: pd.DataFrame, rolling_windows: List[int] 
     # Verify leakage prevention
     print(f"\n  --- Leakage Prevention Verification ---")
     for window in rolling_windows:
-        col = f'daily_withdrawals_{window}d_rolling_mean'
+        col = f'daily_withdrawals_{window}p_rolling_mean'
         sample = result.dropna(subset=[col])
         if len(sample) > 0:
             # The rolling mean at date t should use data from t-1, t-2, ..., t-window
             # It should NOT include the value at date t
-            print(f"  ✓ {window}d rolling: shift(1) applied → no look-ahead bias")
+            print(f"  ✓ {window}p rolling: shift(1) applied → no look-ahead bias")
 
     return result
 
@@ -781,10 +781,10 @@ def generate_baselines(df: pd.DataFrame) -> pd.DataFrame:
     """
     Create simple baseline predictions for comparison.
 
-    Baselines:
-        - prev_day_baseline: uses 1-day lag of target value
-        - prev_week_baseline: uses 7-day lag of target value
-        - roll7_avg_baseline: uses 7-day rolling average (shifted by 1)
+    Baselines generated:
+        - prev_period_baseline: uses 1-period lag
+        - prev_week_baseline: uses 14-period lag (7 days)
+        - roll7_avg_baseline: uses 14-period rolling average (shifted by 1)
 
     Parameters:
         df (pd.DataFrame): Data with lag and rolling features already computed.
@@ -797,23 +797,23 @@ def generate_baselines(df: pd.DataFrame) -> pd.DataFrame:
     print("=" * 70)
 
     result = df.copy()
-    targets = ['daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement']
+    targets = ['daily_withdrawals', 'daily_deposits']
 
     baseline_count = 0
     for target in targets:
-        # Previous-day baseline: use 1-day lag
-        result[f'{target}_prev_day_baseline'] = result[f'{target}_1d_lag']
+        # Previous-period baseline: use 1-period lag
+        result[f'{target}_prev_period_baseline'] = result[f'{target}_1p_lag']
 
-        # Previous-week baseline: use 7-day lag
-        result[f'{target}_prev_week_baseline'] = result[f'{target}_7d_lag']
+        # Previous-week baseline: use 14-period lag (7 days)
+        result[f'{target}_prev_week_baseline'] = result[f'{target}_14p_lag']
 
-        # 7-day rolling average baseline
-        result[f'{target}_roll7_avg_baseline'] = result[f'{target}_7d_rolling_mean']
+        # 7-day (14 periods) rolling average baseline
+        result[f'{target}_roll7_avg_baseline'] = result[f'{target}_14p_rolling_mean']
 
         baseline_count += 3
 
     print(f"✓ Baseline predictions generated: {baseline_count}")
-    print(f"  Types: prev_day, prev_week, roll7_avg for {len(targets)} targets")
+    print(f"  Types: prev_period, prev_week, roll7_avg for {len(targets)} targets")
 
     return result
 
@@ -845,8 +845,8 @@ def compute_baseline_metrics(
     if len(val_df) == 0:
         return {'error': 'Validation set is empty'}
 
-    targets = ['daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement']
-    baselines = ['prev_day_baseline', 'prev_week_baseline', 'roll7_avg_baseline']
+    targets = ['daily_withdrawals', 'daily_deposits']
+    baselines = ['prev_period_baseline', 'prev_week_baseline', 'roll7_avg_baseline']
     metrics = {}
 
     for target in targets:
@@ -983,7 +983,7 @@ def create_feature_dictionary(df: pd.DataFrame) -> Dict:
             description = f"Unique {col.replace('_', ' ')}"
         elif col in ['daily_withdrawals', 'daily_deposits']:
             category = 'target'
-            description = f"Daily {col.replace('_', ' ')} (target variable)"
+            description = f"Daily {col.replace('daily_', '').replace('_', ' ')} (target variable)"
         elif col in ['net_cash', 'cash_requirement']:
             category = 'target'
             description = f"Daily {col.replace('_', ' ')} (derived target variable)"
@@ -994,38 +994,38 @@ def create_feature_dictionary(df: pd.DataFrame) -> Dict:
             category = 'lag_feature'
             # Extract window from column name
             parts = col.split('_')
-            window = [p for p in parts if 'd' in p and p[0].isdigit()]
-            window_str = window[0].replace('d', '') if window else '?'
+            window = [p for p in parts if 'p' in p and p[0].isdigit()]
+            window_str = window[0].replace('p', '') if window else '?'
             target_name = col.replace(f'_{window[0]}_lag', '') if window else col
-            description = f"{window_str}-day lag of {target_name} (exact calendar day)"
+            description = f"{window_str}-period lag of {target_name} (exact period)"
         elif 'rolling_mean' in col_lower:
             category = 'rolling_feature'
             parts = col.split('_')
-            window = [p for p in parts if 'd' in p and p[0].isdigit()]
-            window_str = window[0].replace('d', '') if window else '?'
+            window = [p for p in parts if 'p' in p and p[0].isdigit()]
+            window_str = window[0].replace('p', '') if window else '?'
             target_name = col.replace(f'_{window[0]}_rolling_mean', '') if window else col
-            description = f"{window_str}-day rolling mean of {target_name} (shifted, no leakage)"
+            description = f"{window_str}-period rolling mean of {target_name} (shifted, no leakage)"
         elif 'rolling_std' in col_lower:
             category = 'rolling_feature'
             parts = col.split('_')
-            window = [p for p in parts if 'd' in p and p[0].isdigit()]
-            window_str = window[0].replace('d', '') if window else '?'
+            window = [p for p in parts if 'p' in p and p[0].isdigit()]
+            window_str = window[0].replace('p', '') if window else '?'
             target_name = col.replace(f'_{window[0]}_rolling_std', '') if window else col
-            description = f"{window_str}-day rolling std of {target_name} (shifted, no leakage)"
+            description = f"{window_str}-period rolling std of {target_name} (shifted, no leakage)"
         elif 'rolling_min' in col_lower:
             category = 'rolling_feature'
             parts = col.split('_')
-            window = [p for p in parts if 'd' in p and p[0].isdigit()]
-            window_str = window[0].replace('d', '') if window else '?'
+            window = [p for p in parts if 'p' in p and p[0].isdigit()]
+            window_str = window[0].replace('p', '') if window else '?'
             target_name = col.replace(f'_{window[0]}_rolling_min', '') if window else col
-            description = f"{window_str}-day rolling min of {target_name} (shifted, no leakage)"
+            description = f"{window_str}-period rolling min of {target_name} (shifted, no leakage)"
         elif 'rolling_max' in col_lower:
             category = 'rolling_feature'
             parts = col.split('_')
-            window = [p for p in parts if 'd' in p and p[0].isdigit()]
-            window_str = window[0].replace('d', '') if window else '?'
+            window = [p for p in parts if 'p' in p and p[0].isdigit()]
+            window_str = window[0].replace('p', '') if window else '?'
             target_name = col.replace(f'_{window[0]}_rolling_max', '') if window else col
-            description = f"{window_str}-day rolling max of {target_name} (shifted, no leakage)"
+            description = f"{window_str}-period rolling max of {target_name} (shifted, no leakage)"
         elif 'baseline' in col_lower:
             category = 'baseline'
             description = f"Baseline prediction: {col.replace('_baseline', '').replace('_', ' ')}"
@@ -1098,13 +1098,13 @@ def analyze_branch_coverage(grid_df: pd.DataFrame) -> pd.DataFrame:
         br_data = grid_df[grid_df['tran_br_code'] == br]
         observed = br_data['daily_withdrawals'].notna().sum()
         missing = br_data['daily_withdrawals'].isna().sum()
-        coverage_pct = observed / total_dates * 100
+        coverage_pct = observed / (total_dates * 2) * 100
 
         coverage_records.append({
             'tran_br_code': br,
-            'total_expected_dates': total_dates,
-            'observed_dates': observed,
-            'missing_dates': missing,
+            'total_expected_periods': total_dates * 2,
+            'observed_periods': observed,
+            'missing_periods': missing,
             'coverage_pct': round(coverage_pct, 2),
             'date_min': br_data['start_date'].min(),
             'date_max': br_data['start_date'].max()
@@ -1113,12 +1113,12 @@ def analyze_branch_coverage(grid_df: pd.DataFrame) -> pd.DataFrame:
     coverage_df = pd.DataFrame(coverage_records)
     coverage_df = coverage_df.sort_values('tran_br_code').reset_index(drop=True)
 
-    print(f"  Branch coverage across {total_dates} calendar dates:")
+    print(f"  Branch coverage across {total_dates * 2} periods ({total_dates} days):")
     print(f"  {'Branch':<10} {'Expected':<10} {'Observed':<10} {'Missing':<10} {'Coverage':<10}")
     print(f"  {'-'*50}")
     for _, row in coverage_df.iterrows():
-        print(f"  {int(row['tran_br_code']):<10} {row['total_expected_dates']:<10} "
-              f"{row['observed_dates']:<10} {row['missing_dates']:<10} "
+        print(f"  {int(row['tran_br_code']):<10} {row['total_expected_periods']:<10} "
+              f"{row['observed_periods']:<10} {row['missing_periods']:<10} "
               f"{row['coverage_pct']:<10.1f}%")
 
     avg_coverage = coverage_df['coverage_pct'].mean()
@@ -1216,7 +1216,7 @@ def run_assertions(
 
     Assertions:
         1. Total preservation: No data loss from hourly → daily aggregation
-        2. Unique branch-date keys: No duplicate (branch, date) pairs
+        2. Unique branch-date keys: No duplicate (branch, date, ) pairs
         3. Calendar-aligned lags: Lags represent exact calendar days
         4. Leakage prevention: Rolling features use shift(1)
         5. Non-overlapping splits: No date overlap between train/val/test
@@ -1266,8 +1266,8 @@ def run_assertions(
     print(f"\n{'[2] UNIQUE BRANCH-DATE KEYS':-^60}")
     before = len(feature_df)
     after = len(feature_df.drop_duplicates(subset=['tran_br_code', 'start_date']))
-    assert before == after, f"Duplicate (branch, date) pairs found: {before - after} duplicates"
-    print(f"  ✓ No duplicate (branch, date) pairs: {before} unique keys")
+    assert before == after, f"Duplicate (branch, date, ) pairs found: {before - after} duplicates"
+    print(f"  ✓ No duplicate (branch, date, ) pairs: {before} unique keys")
 
     # --- Assertion 3: Calendar-aligned lags ---
     print(f"\n{'[3] CALENDAR-ALIGNED LAGS':-^60}")
@@ -1588,7 +1588,7 @@ def run_pipeline(
     # Record expected vs observed for report
     branches = sorted(grid_df['tran_br_code'].unique())
     all_dates = sorted(grid_df['start_date'].unique())
-    report['expected_combinations'] = int(len(branches) * len(all_dates))
+    report['expected_combinations'] = int(len(branches) * len(all_dates) * 2)
     report['observed_combinations'] = int(grid_df['daily_withdrawals'].notna().sum())
     report['grid_shape'] = list(grid_df.shape)
 
