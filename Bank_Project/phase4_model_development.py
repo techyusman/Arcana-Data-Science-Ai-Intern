@@ -44,10 +44,15 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.base import clone
 
 # XGBoost & LightGBM
 import xgboost as xgb
 import lightgbm as lgb
+
+# Prophet
+from prophet import Prophet
 
 # Visualization
 import matplotlib.pyplot as plt
@@ -62,8 +67,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 # =============================================================================
 
 # --- File Paths ---
-INPUT_PATH = "Bank DataSet/model_ready_data.csv"
-OUTPUT_DIR = "Bank DataSet"
+INPUT_PATH = "../Bank DataSet/model_ready_data.csv"
+OUTPUT_DIR = "../Bank DataSet"
 BASELINE_METRICS_PATH = os.path.join(OUTPUT_DIR, "baseline_metrics.json")
 MODELS_DIR = os.path.join(OUTPUT_DIR, "models")
 PREDICTIONS_DIR = os.path.join(OUTPUT_DIR, "predictions")
@@ -75,7 +80,7 @@ FEATURE_IMPORTANCE_PATH = os.path.join(OUTPUT_DIR, "feature_importance.json")
 MODEL_REPORT_PATH = os.path.join(OUTPUT_DIR, "model_report.json")
 
 # --- Target Variables ---
-TARGETS = ['daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement']
+TARGETS = ['daily_withdrawals', 'daily_deposits']
 
 # --- Models to Train ---
 MODELS = {
@@ -99,24 +104,44 @@ MODELS = {
         n_estimators=200, max_depth=6, learning_rate=0.1,
         subsample=0.8, colsample_bytree=0.8,
         random_state=42, verbose=-1, n_jobs=-1
-    )
+    ),
+    'Tuned XGBoost': RandomizedSearchCV(
+        xgb.XGBRegressor(random_state=42, verbosity=0, n_jobs=-1),
+        param_distributions={
+            'n_estimators': [100, 300, 500],
+            'max_depth': [4, 6, 8],
+            'learning_rate': [0.01, 0.05, 0.1],
+            'subsample': [0.7, 0.9],
+            'colsample_bytree': [0.7, 0.9]
+        },
+        n_iter=10, cv=3, scoring='neg_mean_absolute_error', random_state=42, n_jobs=-1, verbose=0
+    ),
+    'Tuned LightGBM': RandomizedSearchCV(
+        lgb.LGBMRegressor(random_state=42, verbose=-1, n_jobs=-1),
+        param_distributions={
+            'n_estimators': [100, 300, 500],
+            'max_depth': [4, 6, 8],
+            'learning_rate': [0.01, 0.05, 0.1],
+            'subsample': [0.7, 0.9],
+            'colsample_bytree': [0.7, 0.9]
+        },
+        n_iter=10, cv=3, scoring='neg_mean_absolute_error', random_state=42, n_jobs=-1, verbose=0
+    ),
+    'Prophet': 'Prophet'
 }
 
 # --- Columns to Exclude from Predictors ---
 CURRENT_DAY_COLS = [
-    'daily_withdrawals', 'daily_deposits', 'net_cash', 'cash_requirement',
+    'daily_withdrawals', 'daily_deposits',
+    'net_cash', 'cash_requirement',
     'transaction_count', 'active_hour_count'
 ]
 
 BASELINE_COLS = [
-    'daily_withdrawals_prev_day_baseline', 'daily_withdrawals_prev_week_baseline',
+    'daily_withdrawals_prev_period_baseline', 'daily_withdrawals_prev_week_baseline',
     'daily_withdrawals_roll7_avg_baseline',
-    'daily_deposits_prev_day_baseline', 'daily_deposits_prev_week_baseline',
-    'daily_deposits_roll7_avg_baseline',
-    'net_cash_prev_day_baseline', 'net_cash_prev_week_baseline',
-    'net_cash_roll7_avg_baseline',
-    'cash_requirement_prev_day_baseline', 'cash_requirement_prev_week_baseline',
-    'cash_requirement_roll7_avg_baseline'
+    'daily_deposits_prev_period_baseline', 'daily_deposits_prev_week_baseline',
+    'daily_deposits_roll7_avg_baseline'
 ]
 
 # --- Evaluation Metrics ---
@@ -342,22 +367,34 @@ def train_models(data: Dict, models: Dict = None) -> Dict:
             print(f"  [{combo_count}/{total_combos}] Training {model_name}...", end=' ')
 
             try:
-                # Train
-                model_copy = model.__class__(**model.get_params()) if hasattr(model, 'get_params') else model
-                model_copy.fit(X_train_clean, y_train_clean)
+                if model_name == 'Prophet':
+                    df_train_prophet = pd.DataFrame({'ds': data['dates_train'][train_mask], 'y': y_train_clean})
+                    df_val_prophet = pd.DataFrame({'ds': data['dates_val'][val_mask]})
+                    m = Prophet(yearly_seasonality=True, weekly_seasonality=True, daily_seasonality=False)
+                    m.fit(df_train_prophet)
+                    y_pred_train = m.predict(df_train_prophet)['yhat'].values
+                    y_pred_val = m.predict(df_val_prophet)['yhat'].values
+                    model_to_save = m
+                else:
+                    # Train
+                    model_copy = clone(model)
+                    model_copy.fit(X_train_clean, y_train_clean)
 
-                # Predict
-                y_pred_train = model_copy.predict(X_train_clean)
-                y_pred_val = model_copy.predict(X_val_clean)
+                    # Predict
+                    y_pred_train = model_copy.predict(X_train_clean)
+                    y_pred_val = model_copy.predict(X_val_clean)
+                    model_to_save = model_copy.best_estimator_ if hasattr(model_copy, 'best_estimator_') else model_copy
 
                 trained_models[target][model_name] = {
-                    'model': model_copy,
+                    'model': model_to_save,
+                    'val_mae': mean_absolute_error(y_val_clean, y_pred_val),
+                    'val_rmse': np.sqrt(mean_squared_error(y_val_clean, y_pred_val)),
                     'y_pred_train': y_pred_train,
                     'y_pred_val': y_pred_val,
                     'y_true_train': y_train_clean,
                     'y_true_val': y_val_clean
                 }
-                print(f"✓ (val MAE: {mean_absolute_error(y_val_clean, y_pred_val):,.0f})")
+                print(f"✓ (val MAE: {trained_models[target][model_name]['val_mae']:,.0f})")
 
             except Exception as e:
                 print(f"✗ FAILED: {str(e)[:80]}")
@@ -519,7 +556,7 @@ def analyze_feature_importance(
     for target in TARGETS:
         importance_results[target] = {}
 
-        for model_name in ['RandomForest', 'XGBoost', 'LightGBM', 'GradientBoosting']:
+        for model_name in ['RandomForest', 'XGBoost', 'LightGBM', 'GradientBoosting', 'Tuned XGBoost', 'Tuned LightGBM']:
             model_info = trained_models.get(target, {}).get(model_name)
             if model_info is None:
                 continue
@@ -736,8 +773,8 @@ def create_visualizations(
     print(f"✓ Saved model comparison plot")
 
     # --- Plot 2: Best Model Predictions vs Actual (Validation) ---
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-    axes = axes.flatten()
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+    axes = np.array(axes).flatten()  # Ensure it's a flat array even if 1D
 
     for idx, target in enumerate(TARGETS):
         ax = axes[idx]
