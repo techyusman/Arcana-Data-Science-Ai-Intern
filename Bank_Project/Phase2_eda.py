@@ -10,7 +10,7 @@ This script combines selected visualizations from three analysis modules:
 3. Time Series EDA - Weekly patterns, monthly trends, cumulative cash flow,
                      weekend vs weekday, daily distribution
 
-Author: Muhammad Usman
+Author: Muhammad Usman AI Intern
 ===============================================================================
 """
 
