@@ -1,0 +1,188 @@
+{
+  "hourly_shape": [
+    81709,
+    5
+  ],
+  "hourly_date_range": [
+    "2024-01-02 00:00:00",
+    "2026-04-04 00:00:00"
+  ],
+  "hourly_unique_branches": 15,
+  "expected_combinations": 24720,
+  "observed_combinations": 9032,
+  "grid_shape": [
+    12360,
+    24
+  ],
+  "missing_combinations_count": 3328,
+  "missing_combinations_pct": 13.46,
+  "feature_missing_pct": 7.8261,
+  "feature_missing_cols": {
+    "daily_withdrawals": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_deposits": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "net_cash": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "cash_requirement": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "transaction_count": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "active_hour_count": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_withdrawals_1p_lag": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_deposits_1p_lag": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_withdrawals_7p_lag": {
+      "missing": 3215,
+      "pct": 27.06
+    },
+    "daily_deposits_7p_lag": {
+      "missing": 3215,
+      "pct": 27.06
+    },
+    "daily_withdrawals_14p_lag": {
+      "missing": 3183,
+      "pct": 26.79
+    },
+    "daily_deposits_14p_lag": {
+      "missing": 3183,
+      "pct": 26.79
+    },
+    "daily_withdrawals_28p_lag": {
+      "missing": 3191,
+      "pct": 26.86
+    },
+    "daily_deposits_28p_lag": {
+      "missing": 3191,
+      "pct": 26.86
+    },
+    "daily_withdrawals_prev_period_baseline": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_withdrawals_prev_week_baseline": {
+      "missing": 3183,
+      "pct": 26.79
+    },
+    "daily_deposits_prev_period_baseline": {
+      "missing": 3210,
+      "pct": 27.02
+    },
+    "daily_deposits_prev_week_baseline": {
+      "missing": 3183,
+      "pct": 26.79
+    }
+  },
+  "final_shape": [
+    11880,
+    62
+  ],
+  "splits": {
+    "train": {
+      "shape": [
+        7320,
+        62
+      ],
+      "date_range": [
+        "2024-01-30 00:00:00",
+        "2025-05-31 00:00:00"
+      ]
+    },
+    "validation": {
+      "shape": [
+        1830,
+        62
+      ],
+      "date_range": [
+        "2025-06-01 00:00:00",
+        "2025-09-30 00:00:00"
+      ]
+    },
+    "test": {
+      "shape": [
+        2730,
+        62
+      ],
+      "date_range": [
+        "2025-10-01 00:00:00",
+        "2026-03-31 00:00:00"
+      ]
+    }
+  },
+  "feature_count": {
+    "total_columns": 62,
+    "lag_features": 16,
+    "rolling_features": 48,
+    "calendar_features": 12,
+    "baseline_features": 12,
+    "target_variables": 4,
+    "identifiers": 2,
+    "current_day_excluded": 2
+  },
+  "pipeline_config": {
+    "lag_windows": [
+      1,
+      7,
+      14,
+      28
+    ],
+    "rolling_windows": [
+      7,
+      14,
+      30
+    ],
+    "retain_through_date": "2026-03-31",
+    "train_split_date": "2025-06-01",
+    "val_split_date": "2025-10-01",
+    "max_allowed_missing_pct": 30.0,
+    "key_fixes": [
+      "Retains complete records through 2026-03-31 (not blindly 30 days)",
+      "Excludes only incomplete April 2026 data",
+      "Removes initial rows only where max lag (28d) unavailable",
+      "Uses complete branch-date grid for exact calendar-day lags",
+      "Missing targets kept as NaN (not zero-filled)",
+      "All rolling features use shift(1) for leakage prevention",
+      "Current-day predictors excluded from model features",
+      "Chronological splits with no date overlap",
+      "WAPE and underforecasting rate added to baseline metrics",
+      "Feature dictionary and branch coverage saved"
+    ],
+    "module_list": [
+      "load_and_validate_input",
+      "aggregate_to_daily",
+      "generate_targets",
+      "generate_calendar_features",
+      "build_complete_grid",
+      "analyze_missing_combinations",
+      "generate_calendar_aligned_lags",
+      "generate_rolling_features",
+      "exclude_incomplete_periods",
+      "exclude_current_day_predictors",
+      "create_chronological_splits",
+      "generate_baselines",
+      "compute_baseline_metrics",
+      "create_feature_dictionary",
+      "analyze_branch_coverage",
+      "run_assertions"
+    ]
+  },
+  "execution_timestamp": "2026-07-22T17:14:40.112323"
+}

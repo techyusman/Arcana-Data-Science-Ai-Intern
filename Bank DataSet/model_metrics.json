@@ -1,0 +1,160 @@
+{
+  "daily_withdrawals": {
+    "baseline": {
+      "name": "roll7 avg",
+      "mae": 10746429.66,
+      "rmse": 14311564.94,
+      "wape": 0.3009,
+      "underforecasting_rate": 0.4884
+    },
+    "LinearRegression": {
+      "mae": 8816348.87,
+      "rmse": 11420049.76,
+      "wape": 0.2469,
+      "underforecasting_rate": 0.3955,
+      "num_comparisons": 1378
+    },
+    "Ridge": {
+      "mae": 8809892.39,
+      "rmse": 11413467.67,
+      "wape": 0.2467,
+      "underforecasting_rate": 0.3926,
+      "num_comparisons": 1378
+    },
+    "Lasso": {
+      "mae": 8812616.86,
+      "rmse": 11417146.82,
+      "wape": 0.2468,
+      "underforecasting_rate": 0.3897,
+      "num_comparisons": 1378
+    },
+    "RandomForest": {
+      "mae": 9019293.48,
+      "rmse": 12066547.05,
+      "wape": 0.2525,
+      "underforecasting_rate": 0.4136,
+      "num_comparisons": 1378
+    },
+    "GradientBoosting": {
+      "mae": 9349177.52,
+      "rmse": 12292112.43,
+      "wape": 0.2618,
+      "underforecasting_rate": 0.3701,
+      "num_comparisons": 1378
+    },
+    "XGBoost": {
+      "mae": 9349555.77,
+      "rmse": 12298644.95,
+      "wape": 0.2618,
+      "underforecasting_rate": 0.3868,
+      "num_comparisons": 1378
+    },
+    "LightGBM": {
+      "mae": 9150058.64,
+      "rmse": 12062732.5,
+      "wape": 0.2562,
+      "underforecasting_rate": 0.3839,
+      "num_comparisons": 1378
+    },
+    "Tuned XGBoost": {
+      "mae": 8791343.52,
+      "rmse": 11562763.37,
+      "wape": 0.2462,
+      "underforecasting_rate": 0.4057,
+      "num_comparisons": 1378
+    },
+    "Tuned LightGBM": {
+      "mae": 8828300.56,
+      "rmse": 11691509.64,
+      "wape": 0.2472,
+      "underforecasting_rate": 0.4071,
+      "num_comparisons": 1378
+    },
+    "Prophet": {
+      "mae": 16048072.33,
+      "rmse": 19802878.84,
+      "wape": 0.4493,
+      "underforecasting_rate": 0.3396,
+      "num_comparisons": 1378
+    }
+  },
+  "daily_deposits": {
+    "baseline": {
+      "name": "roll7 avg",
+      "mae": 10387471.32,
+      "rmse": 13501752.87,
+      "wape": 0.2958,
+      "underforecasting_rate": 0.4949
+    },
+    "LinearRegression": {
+      "mae": 8156702.75,
+      "rmse": 10461409.52,
+      "wape": 0.2323,
+      "underforecasting_rate": 0.4194,
+      "num_comparisons": 1378
+    },
+    "Ridge": {
+      "mae": 8150252.66,
+      "rmse": 10449966.86,
+      "wape": 0.2321,
+      "underforecasting_rate": 0.4122,
+      "num_comparisons": 1378
+    },
+    "Lasso": {
+      "mae": 8147919.95,
+      "rmse": 10444319.17,
+      "wape": 0.232,
+      "underforecasting_rate": 0.4122,
+      "num_comparisons": 1378
+    },
+    "RandomForest": {
+      "mae": 8259567.01,
+      "rmse": 10760476.45,
+      "wape": 0.2352,
+      "underforecasting_rate": 0.4608,
+      "num_comparisons": 1378
+    },
+    "GradientBoosting": {
+      "mae": 8724491.71,
+      "rmse": 11118330.52,
+      "wape": 0.2484,
+      "underforecasting_rate": 0.4078,
+      "num_comparisons": 1378
+    },
+    "XGBoost": {
+      "mae": 8614282.09,
+      "rmse": 11015928.03,
+      "wape": 0.2453,
+      "underforecasting_rate": 0.3788,
+      "num_comparisons": 1378
+    },
+    "LightGBM": {
+      "mae": 8619452.17,
+      "rmse": 11012699.19,
+      "wape": 0.2454,
+      "underforecasting_rate": 0.3999,
+      "num_comparisons": 1378
+    },
+    "Tuned XGBoost": {
+      "mae": 8147908.19,
+      "rmse": 10522904.78,
+      "wape": 0.232,
+      "underforecasting_rate": 0.4594,
+      "num_comparisons": 1378
+    },
+    "Tuned LightGBM": {
+      "mae": 8276776.84,
+      "rmse": 10644035.64,
+      "wape": 0.2357,
+      "underforecasting_rate": 0.4296,
+      "num_comparisons": 1378
+    },
+    "Prophet": {
+      "mae": 15310132.11,
+      "rmse": 18789054.28,
+      "wape": 0.436,
+      "underforecasting_rate": 0.3491,
+      "num_comparisons": 1378
+    }
+  }
+}

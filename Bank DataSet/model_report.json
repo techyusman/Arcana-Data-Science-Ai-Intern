@@ -1,41 +1,23 @@
 {
-  "execution_timestamp": "2026-07-19T17:29:44.710026",
+  "execution_timestamp": "2026-07-22T17:17:42.790822",
   "best_baseline": "7-day Rolling Average (roll7_avg_baseline)",
   "baseline_metrics": {
     "daily_withdrawals": {
       "baseline_name": "roll7_avg_baseline",
       "baseline_display": "roll7 avg",
-      "mae": 10528539.02,
-      "rmse": 13881532.47,
-      "wape": 0.2948,
-      "underforecasting_rate": 0.4978,
+      "mae": 10746429.66,
+      "rmse": 14311564.94,
+      "wape": 0.3009,
+      "underforecasting_rate": 0.4884,
       "num_comparisons": 1378
     },
     "daily_deposits": {
       "baseline_name": "roll7_avg_baseline",
       "baseline_display": "roll7 avg",
-      "mae": 10289307.17,
-      "rmse": 13366581.41,
-      "wape": 0.293,
-      "underforecasting_rate": 0.5131,
-      "num_comparisons": 1378
-    },
-    "net_cash": {
-      "baseline_name": "roll7_avg_baseline",
-      "baseline_display": "roll7 avg",
-      "mae": 7770227.95,
-      "rmse": 10229240.08,
-      "wape": 1.0324,
-      "underforecasting_rate": 0.5116,
-      "num_comparisons": 1378
-    },
-    "cash_requirement": {
-      "baseline_name": "roll7_avg_baseline",
-      "baseline_display": "roll7 avg",
-      "mae": 4579654.55,
-      "rmse": 6422798.19,
-      "wape": 1.1277,
-      "underforecasting_rate": 0.3491,
+      "mae": 10387471.32,
+      "rmse": 13501752.87,
+      "wape": 0.2958,
+      "underforecasting_rate": 0.4949,
       "num_comparisons": 1378
     }
   },
@@ -46,39 +28,28 @@
     "RandomForest",
     "GradientBoosting",
     "XGBoost",
-    "LightGBM"
+    "LightGBM",
+    "Tuned XGBoost",
+    "Tuned LightGBM",
+    "Prophet"
   ],
   "targets": [
     "daily_withdrawals",
-    "daily_deposits",
-    "net_cash",
-    "cash_requirement"
+    "daily_deposits"
   ],
-  "feature_count": 81,
+  "feature_count": 49,
   "evaluation_summary": {
     "daily_withdrawals": {
-      "baseline_mae": 10528539.02,
-      "best_model": "Ridge",
-      "best_model_mae": 8793484.01,
-      "improvement_vs_baseline_pct": 16.48
+      "baseline_mae": 10746429.66,
+      "best_model": "Tuned XGBoost",
+      "best_model_mae": 8791343.52,
+      "improvement_vs_baseline_pct": 18.19
     },
     "daily_deposits": {
-      "baseline_mae": 10289307.17,
-      "best_model": "Lasso",
-      "best_model_mae": 8162416.64,
-      "improvement_vs_baseline_pct": 20.67
-    },
-    "net_cash": {
-      "baseline_mae": 7770227.95,
-      "best_model": "Lasso",
-      "best_model_mae": 6967649.25,
-      "improvement_vs_baseline_pct": 10.33
-    },
-    "cash_requirement": {
-      "baseline_mae": 4579654.55,
-      "best_model": "LinearRegression",
-      "best_model_mae": 4239155.04,
-      "improvement_vs_baseline_pct": 7.44
+      "baseline_mae": 10387471.32,
+      "best_model": "Tuned XGBoost",
+      "best_model_mae": 8147908.19,
+      "improvement_vs_baseline_pct": 21.56
     }
   }
 }

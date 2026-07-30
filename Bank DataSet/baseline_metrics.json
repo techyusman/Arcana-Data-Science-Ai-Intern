@@ -1,0 +1,48 @@
+{
+  "daily_withdrawals": {
+    "prev_period_baseline": {
+      "mae": 13176191.7,
+      "rmse": 17371969.72,
+      "wape": 0.3928,
+      "underforecasting_rate": 0.4083,
+      "num_comparisons": 1080
+    },
+    "prev_week_baseline": {
+      "mae": 12627683.77,
+      "rmse": 16911489.13,
+      "wape": 0.3463,
+      "underforecasting_rate": 0.4937,
+      "num_comparisons": 1262
+    },
+    "roll7_avg_baseline": {
+      "mae": 10746429.66,
+      "rmse": 14311564.94,
+      "wape": 0.3009,
+      "underforecasting_rate": 0.4884,
+      "num_comparisons": 1378
+    }
+  },
+  "daily_deposits": {
+    "prev_period_baseline": {
+      "mae": 12647949.35,
+      "rmse": 16334424.48,
+      "wape": 0.3884,
+      "underforecasting_rate": 0.4074,
+      "num_comparisons": 1080
+    },
+    "prev_week_baseline": {
+      "mae": 11716700.62,
+      "rmse": 15241420.68,
+      "wape": 0.3258,
+      "underforecasting_rate": 0.4881,
+      "num_comparisons": 1262
+    },
+    "roll7_avg_baseline": {
+      "mae": 10387471.32,
+      "rmse": 13501752.87,
+      "wape": 0.2958,
+      "underforecasting_rate": 0.4949,
+      "num_comparisons": 1378
+    }
+  }
+}

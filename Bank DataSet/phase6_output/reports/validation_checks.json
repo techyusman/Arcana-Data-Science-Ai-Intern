@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-07-22T17:37:37.740359",
+  "assertions_passed": true,
+  "forecast_records": 105,
+  "branches_covered": 15,
+  "dates_covered": 7,
+  "validation": {
+    "daily_withdrawals": {
+      "model_mae": 8772297.86,
+      "model_rmse": 11481831.28,
+      "baseline_mae": 10296560.65,
+      "improvement_pct": 14.8,
+      "test_samples": 2015
+    },
+    "daily_deposits": {
+      "model_mae": 8151458.07,
+      "model_rmse": 10494791.39,
+      "baseline_mae": 9756600.46,
+      "improvement_pct": 16.45,
+      "test_samples": 2015
+    },
+    "forecast_checks": {
+      "negative_cash_requirement": 0,
+      "negative_net_cash": 86,
+      "all_nonnegative_cr": "True",
+      "all_nonnegative_net": "True"
+    }
+  }
+}

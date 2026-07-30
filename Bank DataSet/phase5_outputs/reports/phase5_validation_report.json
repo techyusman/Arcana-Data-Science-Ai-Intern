@@ -1,0 +1,68 @@
+{
+  "phase": "Phase 5 \u2014 Model Validation & XAI",
+  "execution_timestamp": "2026-07-20T20:16:49.828665",
+  "verification": {
+    "feature_order": {
+      "status": "PASS",
+      "details": [
+        "Train: \u2713 All 80 features match",
+        "Val: \u2713 All 80 features match",
+        "Test: \u2713 All 80 features match"
+      ]
+    },
+    "scaling": {
+      "status": "INFO",
+      "details": [
+        "High-variance features (62): ['daily_withdrawals_1d_lag', 'daily_deposits_1d_lag', 'net_cash_1d_lag', 'cash_requirement_1d_lag', 'daily_withdrawals_7d_lag']...",
+        "Feature value ranges: [-52858200 to 142689890]"
+      ]
+    },
+    "branch_encoding": {
+      "status": "PASS",
+      "details": [
+        "Train: 15 branches: [np.int64(104), np.int64(202), np.int64(234), np.int64(287), np.int64(372), np.int64(394), np.int64(511), np.int64(593), np.int64(659), np.int64(1046), np.int64(1092), np.int64(1200), np.int64(1297), np.int64(1376), np.int64(1739)]",
+        "Val: 15 branches: [np.int64(104), np.int64(202), np.int64(234), np.int64(287), np.int64(372), np.int64(394), np.int64(511), np.int64(593), np.int64(659), np.int64(1046), np.int64(1092), np.int64(1200), np.int64(1297), np.int64(1376), np.int64(1739)]",
+        "Test: 15 branches: [np.int64(104), np.int64(202), np.int64(234), np.int64(287), np.int64(372), np.int64(394), np.int64(511), np.int64(593), np.int64(659), np.int64(1046), np.int64(1092), np.int64(1200), np.int64(1297), np.int64(1376), np.int64(1739)]"
+      ]
+    },
+    "missing_values": {
+      "status": "INFO",
+      "details": [
+        "Train: 61082/732000 (8.34%) missing",
+        "Val: 14000/183000 (7.65%) missing",
+        "Test: 21074/273000 (7.72%) missing"
+      ]
+    },
+    "target_leakage": {
+      "status": "PASS",
+      "details": []
+    },
+    "overall": "INFO"
+  },
+  "selected_models": {},
+  "test_metrics": {},
+  "feature_count": 80,
+  "data_splits": {
+    "train_rows": 7320,
+    "val_rows": 1830,
+    "test_rows": 2730
+  },
+  "xai_summary": {
+    "targets_with_xai": [
+      "daily_withdrawals",
+      "daily_deposits",
+      "net_cash",
+      "cash_requirement"
+    ],
+    "disclaimer": "All explanations show statistical associations, not causal relationships. Feature importance indicates which features the model uses for predictions, but does not imply that changing those features will cause the target to change."
+  },
+  "output_directories": {
+    "final_models": "Bank DataSet\\phase5_outputs\\final_models",
+    "pipelines": "Bank DataSet\\phase5_outputs\\pipelines",
+    "predictions": "Bank DataSet\\phase5_outputs\\predictions",
+    "metrics": "Bank DataSet\\phase5_outputs\\metrics",
+    "xai": "Bank DataSet\\phase5_outputs\\xai_results",
+    "plots": "Bank DataSet\\phase5_outputs\\plots",
+    "reports": "Bank DataSet\\phase5_outputs\\reports"
+  }
+}

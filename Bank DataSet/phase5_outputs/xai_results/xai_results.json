@@ -1,0 +1,9 @@
+{
+  "disclaimer": "All explanations show statistical associations, not causal relationships. Feature importance indicates which features the model uses for predictions, but does not imply that changing those features will cause the target to change.",
+  "models": {
+    "daily_withdrawals": {},
+    "daily_deposits": {},
+    "net_cash": {},
+    "cash_requirement": {}
+  }
+}

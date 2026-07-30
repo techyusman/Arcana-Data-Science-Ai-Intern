@@ -1,0 +1,3390 @@
+{
+  "daily_withdrawals": {
+    "RandomForest": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.5690831322850732
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.05138912826401907
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.03001820758206121
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.028217864138048963
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.026476738501960626
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.024047423326464933
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.021416785238760876
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.021015900284346637
+        },
+        {
+          "feature": "day",
+          "importance": 0.0205756136867017
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.018172447075765517
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.018091414861138314
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.013919643233455905
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.010223899303522995
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.008689532717716036
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007817534246510181
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.007815972671721986
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.007754053081294518
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.007727474520690563
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.0073360890569377744
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.00725392997949744
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.5690831322850732
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.05138912826401907
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.03001820758206121
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.028217864138048963
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.026476738501960626
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.024047423326464933
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.021416785238760876
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.021015900284346637
+        },
+        {
+          "feature": "day",
+          "importance": 0.0205756136867017
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.018172447075765517
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.018091414861138314
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.013919643233455905
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.010223899303522995
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.008689532717716036
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007817534246510181
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.007815972671721986
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.007754053081294518
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.007727474520690563
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.0073360890569377744
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.00725392997949744
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.0065732864669815
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.006546207312410061
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.0062044626574470196
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.006170114376818419
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.006067341319980372
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.004898233834914916
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.004894883042743533
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.004815101731973172
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.00474540420303828
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.004494251228514795
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.00445422370634446
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.004196518147213099
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.00409996193312048
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.003883763319033381
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.0037773551821749635
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.003663125667530886
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.003399517159418392
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.003280816800888045
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.0015936725494976618
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.0015792322967521002
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.001299135759117856
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.0011532934535108885
+        },
+        {
+          "feature": "year",
+          "importance": 0.0005200931546374703
+        },
+        {
+          "feature": "month",
+          "importance": 0.0003755590087577139
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0001340153704663622
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.00010735516191483257
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 3.0291099110856344e-05
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        }
+      ]
+    },
+    "XGBoost": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3550412952899933
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.1577024608850479
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.06726277619600296
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.045107387006282806
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.033329762518405914
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.02901473641395569
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.018018851056694984
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.016334259882569313
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.016126640141010284
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.015728788450360298
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.013928764499723911
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.011811403557658195
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.010699952021241188
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.010227012448012829
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010035623796284199
+        },
+        {
+          "feature": "day",
+          "importance": 0.008937991224229336
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.008879382163286209
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.008842629380524158
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.007686092983931303
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007564825005829334
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3550412952899933
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.1577024608850479
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.06726277619600296
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.045107387006282806
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.033329762518405914
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.02901473641395569
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.018018851056694984
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.016334259882569313
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.016126640141010284
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.015728788450360298
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.013928764499723911
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.011811403557658195
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.010699952021241188
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.010227012448012829
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010035623796284199
+        },
+        {
+          "feature": "day",
+          "importance": 0.008937991224229336
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.008879382163286209
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.008842629380524158
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.007686092983931303
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007564825005829334
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.006998968310654163
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.006902881897985935
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.006742855068296194
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.006684868596494198
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.006641024723649025
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.0065945652313530445
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.006571284029632807
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0063467249274253845
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.006211608182638884
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.006130218971520662
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.00599483260884881
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.0059373946860432625
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.005931631196290255
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.005878725554794073
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.005503480788320303
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.00546551588922739
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.005456487648189068
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.005383613985031843
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.005180921405553818
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.005020481534302235
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.004925392102450132
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.004635208752006292
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.004520705435425043
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.003841107478365302
+        },
+        {
+          "feature": "year",
+          "importance": 0.0033979814033955336
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.002194432308897376
+        },
+        {
+          "feature": "month",
+          "importance": 0.0017056468641385436
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0009208233095705509
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        }
+      ]
+    },
+    "LightGBM": {
+      "top_features": [
+        {
+          "feature": "day",
+          "importance": 255
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 230
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 220
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 203
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 190
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 186
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 177
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 176
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 158
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 149
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 142
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 140
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 137
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 135
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 128
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 126
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 119
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 114
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 112
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 110
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "day",
+          "importance": 255
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 230
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 220
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 203
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 190
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 186
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 177
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 176
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 158
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 149
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 142
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 140
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 137
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 135
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 128
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 126
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 119
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 114
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 112
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 110
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 110
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 106
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 104
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 103
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 97
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 96
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 90
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 88
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 84
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 84
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 82
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 82
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 79
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 72
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 70
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 68
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 63
+        },
+        {
+          "feature": "month_cos",
+          "importance": 51
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 46
+        },
+        {
+          "feature": "month_sin",
+          "importance": 32
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 31
+        },
+        {
+          "feature": "year",
+          "importance": 25
+        },
+        {
+          "feature": "month",
+          "importance": 18
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 8
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 5
+        },
+        {
+          "feature": "quarter",
+          "importance": 1
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0
+        }
+      ]
+    },
+    "GradientBoosting": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.5350440043313335
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.045798205872102
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.042329139767990014
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.027893903932102757
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.025583788849400012
+        },
+        {
+          "feature": "day",
+          "importance": 0.02528206603580056
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.023387161182550454
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.021668686945162274
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.021037850213392675
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.01999114828794685
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.018200604790239792
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.015594120201645396
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.015425081687902195
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.012146416624161159
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.010911728556443876
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010738186395543
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.0099568548633623
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.00961458918351639
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.008571081792487214
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.008485816106532179
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.5350440043313335
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.045798205872102
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.042329139767990014
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.027893903932102757
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.025583788849400012
+        },
+        {
+          "feature": "day",
+          "importance": 0.02528206603580056
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.023387161182550454
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.021668686945162274
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.021037850213392675
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.01999114828794685
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.018200604790239792
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.015594120201645396
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.015425081687902195
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.012146416624161159
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.010911728556443876
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010738186395543
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.0099568548633623
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.00961458918351639
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.008571081792487214
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.008485816106532179
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007662212994696203
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.007114479350656626
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.00639182084791023
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.006273580973150699
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.006040544732579007
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.00582356421486283
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.005721826773843965
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.005049628496651492
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.004737454951544746
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.004397199294354007
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.003751297122833822
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0037259940225406987
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.003648781406759618
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.0035847410611096913
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.0032806797787872113
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.003069350355214627
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.0027326390680641383
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.0022832804511435044
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.0014827900139583467
+        },
+        {
+          "feature": "year",
+          "importance": 0.0012506198695521912
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.0012495952298210084
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.001237172284326922
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.0009395262894176854
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.00034577806360096085
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.0003215892842407381
+        },
+        {
+          "feature": "month",
+          "importance": 0.00021141298823885228
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 1.2004460525672375e-05
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0
+        }
+      ]
+    },
+    "Tuned XGBoost": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.2374800592660904
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.18698947131633759
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.12879619002342224
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.07373975962400436
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.07149231433868408
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.026096675544977188
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.019992347806692123
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.01974809169769287
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.019296467304229736
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.016656527295708656
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.016388483345508575
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.014640644192695618
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.014595607295632362
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.010677976533770561
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.00992472842335701
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.009838557802140713
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.008773892186582088
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.007302809972316027
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.007300329860299826
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.006955571938306093
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.2374800592660904
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.18698947131633759
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.12879619002342224
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.07373975962400436
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.07149231433868408
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.026096675544977188
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.019992347806692123
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.01974809169769287
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.019296467304229736
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.016656527295708656
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.016388483345508575
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.014640644192695618
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.014595607295632362
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.010677976533770561
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.00992472842335701
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.009838557802140713
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.008773892186582088
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.007302809972316027
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.007300329860299826
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.006955571938306093
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.006744329817593098
+        },
+        {
+          "feature": "day",
+          "importance": 0.005903726443648338
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.005395139567553997
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.004950326401740313
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.004754635971039534
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.004347072448581457
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.004336563870310783
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.0038778060115873814
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0034621066879481077
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.003347547259181738
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.0033030128106474876
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.0032413711305707693
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.003234289586544037
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.0032082265242934227
+        },
+        {
+          "feature": "year",
+          "importance": 0.00318659539334476
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.003162394743412733
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.003155476413667202
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.003127029165625572
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.0030793652404099703
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.0030271392315626144
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.0028910976834595203
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.002753410255536437
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.0027302918024361134
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.0026912963949143887
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.0022082128562033176
+        },
+        {
+          "feature": "month",
+          "importance": 0.001195087330415845
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        }
+      ]
+    },
+    "Tuned LightGBM": {
+      "top_features": [
+        {
+          "feature": "day",
+          "importance": 1323
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 919
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 705
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 650
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 542
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 534
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 495
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 493
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 492
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 421
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 399
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 374
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 364
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 360
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 343
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 322
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 320
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 303
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 295
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 277
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "day",
+          "importance": 1323
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 919
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 705
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 650
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 542
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 534
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 495
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 493
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 492
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 421
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 399
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 374
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 364
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 360
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 343
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 322
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 320
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 303
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 295
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 277
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 276
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 263
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 262
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 252
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 251
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 248
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 236
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 236
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 227
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 227
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 202
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 202
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 200
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 190
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 185
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 185
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 142
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 131
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 124
+        },
+        {
+          "feature": "month_cos",
+          "importance": 100
+        },
+        {
+          "feature": "year",
+          "importance": 96
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 78
+        },
+        {
+          "feature": "month_sin",
+          "importance": 71
+        },
+        {
+          "feature": "month",
+          "importance": 47
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 43
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 16
+        },
+        {
+          "feature": "quarter",
+          "importance": 4
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0
+        }
+      ]
+    }
+  },
+  "daily_deposits": {
+    "RandomForest": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3025524541475074
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.15817205113643765
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.12152575630963815
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.0369103389271472
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.03397127872063012
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.033570885737292944
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.032178777788589664
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.024778282368212404
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.02022768681124847
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.019445637067940818
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.01885541780408379
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.017536199862096268
+        },
+        {
+          "feature": "day",
+          "importance": 0.013126052517633761
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.012911845513394632
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.011965298729463928
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.011964861300989485
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010896863343359599
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.009478574275494589
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.007939292112189094
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.0069555990039654545
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3025524541475074
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.15817205113643765
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.12152575630963815
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.0369103389271472
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.03397127872063012
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.033570885737292944
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.032178777788589664
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.024778282368212404
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.02022768681124847
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.019445637067940818
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.01885541780408379
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.017536199862096268
+        },
+        {
+          "feature": "day",
+          "importance": 0.013126052517633761
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.012911845513394632
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.011965298729463928
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.011964861300989485
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.010896863343359599
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.009478574275494589
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.007939292112189094
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.0069555990039654545
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.0068706256413889845
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.0062348754021954245
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.006077371913363659
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.006011420925474942
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.0053045627841693975
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.004962103701367356
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.004737181061150968
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.004705419034655671
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.004611549966784568
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.00460238034761078
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.004545766905685556
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.004493223158749168
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.004468227327877552
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.0042329610309300575
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.004116815584314196
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.0034914228189666845
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.0034698890835048323
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.003382365452426149
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.003124970169770583
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.0015862875401223126
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.001562696522955042
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.0012546639613676344
+        },
+        {
+          "feature": "year",
+          "importance": 0.0005721716504489836
+        },
+        {
+          "feature": "month",
+          "importance": 0.0004056551644873058
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.00013251073896089136
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 7.783061167197688e-05
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 1.8980222839623926e-06
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        }
+      ]
+    },
+    "XGBoost": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.2580280005931854
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.1742459237575531
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.11742562055587769
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.05624696612358093
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.044665511697530746
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.03951945900917053
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.022723548114299774
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.01817711815237999
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.017406556755304337
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.015031798742711544
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.014243732206523418
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.012078898958861828
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.012055466882884502
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.011984281241893768
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.009372313506901264
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.008558322675526142
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.007277223747223616
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0072125936858356
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.0070116640999913216
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007000959478318691
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.2580280005931854
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.1742459237575531
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.11742562055587769
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.05624696612358093
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.044665511697530746
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.03951945900917053
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.022723548114299774
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.01817711815237999
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.017406556755304337
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.015031798742711544
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.014243732206523418
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.012078898958861828
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.012055466882884502
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.011984281241893768
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.009372313506901264
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.008558322675526142
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.007277223747223616
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0072125936858356
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.0070116640999913216
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.007000959478318691
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.006909362971782684
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.006819604896008968
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.006753207184374332
+        },
+        {
+          "feature": "day",
+          "importance": 0.006633907090872526
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.006490273866802454
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.00647877948358655
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.0060732802376151085
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.006019392982125282
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.005916041787713766
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.005606514867395163
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.005534464493393898
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.005500852596014738
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.005467831157147884
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.0054296404123306274
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.005399559158831835
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.0053929719142615795
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.005109152756631374
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.005011926405131817
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.004997259471565485
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.004940961487591267
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.004877906758338213
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.0046961246989667416
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.004216649569571018
+        },
+        {
+          "feature": "year",
+          "importance": 0.003495236858725548
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0026914814952760935
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.0017082173144444823
+        },
+        {
+          "feature": "month",
+          "importance": 0.0015633681323379278
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        }
+      ]
+    },
+    "LightGBM": {
+      "top_features": [
+        {
+          "feature": "day",
+          "importance": 229
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 197
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 188
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 186
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 183
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 174
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 166
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 160
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 154
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 151
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 148
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 148
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 133
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 126
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 124
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 121
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 119
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 116
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 113
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 109
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "day",
+          "importance": 229
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 197
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 188
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 186
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 183
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 174
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 166
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 160
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 154
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 151
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 148
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 148
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 133
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 126
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 124
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 121
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 119
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 116
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 113
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 109
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 107
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 104
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 102
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 101
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 94
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 91
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 85
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 82
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 82
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 79
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 78
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 75
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 75
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 69
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 66
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 63
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 62
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 60
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 34
+        },
+        {
+          "feature": "month_sin",
+          "importance": 31
+        },
+        {
+          "feature": "month_cos",
+          "importance": 29
+        },
+        {
+          "feature": "year",
+          "importance": 28
+        },
+        {
+          "feature": "month",
+          "importance": 25
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 7
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 6
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0
+        },
+        {
+          "feature": "quarter",
+          "importance": 0
+        }
+      ]
+    },
+    "GradientBoosting": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3159492720471771
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.14204142059311944
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.09745162221261378
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.0632580413961588
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.03846294434158609
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.03273078980781548
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.03163056413205137
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.02693914617793793
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.02598826603544336
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.025256776112432416
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.018387801419907195
+        },
+        {
+          "feature": "day",
+          "importance": 0.01599696112912114
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.015810695419538837
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.015734326299845818
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.010417871900911292
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.008944746912693383
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.008420710067940039
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.007839912164438082
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.007519826640951611
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.0068105459829950225
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.3159492720471771
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.14204142059311944
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.09745162221261378
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.0632580413961588
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.03846294434158609
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.03273078980781548
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.03163056413205137
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.02693914617793793
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.02598826603544336
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.025256776112432416
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.018387801419907195
+        },
+        {
+          "feature": "day",
+          "importance": 0.01599696112912114
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.015810695419538837
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.015734326299845818
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.010417871900911292
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.008944746912693383
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.008420710067940039
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.007839912164438082
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.007519826640951611
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.0068105459829950225
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.006762732439490685
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.006562660672029924
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.0057767956116865455
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.0055992668924908185
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.0053441674052549055
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.004897910034998284
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.00487190890110584
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.004641039527756201
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.004180962594020243
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.004107051460501366
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.004101551659318068
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.0036255901385254096
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.003601227508949152
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.0033383440539830034
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.00317762038959226
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0029362777050939083
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.0021649945460038844
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.0020330937589788396
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.0018520910343290057
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.0011832104323018606
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.0010733369376750128
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.0010373086422911467
+        },
+        {
+          "feature": "year",
+          "importance": 0.0008087895180826165
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.000274083438302958
+        },
+        {
+          "feature": "month",
+          "importance": 0.0002638631462751533
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.00018212383766711627
+        },
+        {
+          "feature": "quarter",
+          "importance": 9.756918617439141e-06
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0
+        }
+      ]
+    },
+    "Tuned XGBoost": {
+      "top_features": [
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.22850139439105988
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.15105527639389038
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.11546290665864944
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.11444949358701706
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.08843909949064255
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.026539891958236694
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.02466101013123989
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.022344445809721947
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.01767364889383316
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.01650889776647091
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.01592656411230564
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.013547878712415695
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.012439614161849022
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.010207193903625011
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.010184739716351032
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.009157748892903328
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.009138153865933418
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.00837847962975502
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.007252114359289408
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.006639137398451567
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 0.22850139439105988
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 0.15105527639389038
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 0.11546290665864944
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 0.11444949358701706
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 0.08843909949064255
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 0.026539891958236694
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 0.02466101013123989
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 0.022344445809721947
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 0.01767364889383316
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 0.01650889776647091
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.01592656411230564
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 0.013547878712415695
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 0.012439614161849022
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 0.010207193903625011
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 0.010184739716351032
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 0.009157748892903328
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 0.009138153865933418
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 0.00837847962975502
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 0.007252114359289408
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 0.006639137398451567
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 0.006004590541124344
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 0.00585837010294199
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 0.004959198646247387
+        },
+        {
+          "feature": "day",
+          "importance": 0.004947854671627283
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 0.004893170204013586
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 0.004797047935426235
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 0.00466238334774971
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 0.004052530042827129
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 0.003585006343200803
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 0.0035033239983022213
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 0.003080270951613784
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 0.0030375178903341293
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 0.0028769352938979864
+        },
+        {
+          "feature": "year",
+          "importance": 0.002861536107957363
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 0.0028332467190921307
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 0.0027869290206581354
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 0.0027541618328541517
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 0.0026718107983469963
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 0.0026265617925673723
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 0.002586483722552657
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 0.0025848480872809887
+        },
+        {
+          "feature": "month_sin",
+          "importance": 0.0025121676735579967
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 0.0024902494624257088
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 0.00247292616404593
+        },
+        {
+          "feature": "month_cos",
+          "importance": 0.0022309909109026194
+        },
+        {
+          "feature": "month",
+          "importance": 0.001941887428984046
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0.0018803502898663282
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0.0
+        },
+        {
+          "feature": "quarter",
+          "importance": 0.0
+        }
+      ]
+    },
+    "Tuned LightGBM": {
+      "top_features": [
+        {
+          "feature": "day",
+          "importance": 1134
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 961
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 710
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 655
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 598
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 543
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 537
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 498
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 454
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 435
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 411
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 386
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 356
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 352
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 343
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 341
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 323
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 319
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 293
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 291
+        }
+      ],
+      "all_features": [
+        {
+          "feature": "day",
+          "importance": 1134
+        },
+        {
+          "feature": "daily_withdrawals_1p_lag",
+          "importance": 961
+        },
+        {
+          "feature": "dayofweek",
+          "importance": 710
+        },
+        {
+          "feature": "daily_deposits_1p_lag",
+          "importance": 655
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_mean",
+          "importance": 598
+        },
+        {
+          "feature": "daily_deposits_14p_lag",
+          "importance": 543
+        },
+        {
+          "feature": "daily_deposits_28p_lag",
+          "importance": 537
+        },
+        {
+          "feature": "daily_withdrawals_28p_lag",
+          "importance": 498
+        },
+        {
+          "feature": "daily_deposits_7p_lag",
+          "importance": 454
+        },
+        {
+          "feature": "tran_br_code",
+          "importance": 435
+        },
+        {
+          "feature": "dayofyear",
+          "importance": 411
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_mean",
+          "importance": 386
+        },
+        {
+          "feature": "dayofweek_sin",
+          "importance": 356
+        },
+        {
+          "feature": "daily_withdrawals_7p_lag",
+          "importance": 352
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_std",
+          "importance": 343
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_std",
+          "importance": 341
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_mean",
+          "importance": 323
+        },
+        {
+          "feature": "daily_withdrawals_14p_lag",
+          "importance": 319
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_min",
+          "importance": 293
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_mean",
+          "importance": 291
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_min",
+          "importance": 287
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_min",
+          "importance": 279
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_max",
+          "importance": 263
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_std",
+          "importance": 241
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_max",
+          "importance": 240
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_std",
+          "importance": 238
+        },
+        {
+          "feature": "daily_deposits_7p_rolling_std",
+          "importance": 233
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_min",
+          "importance": 232
+        },
+        {
+          "feature": "daily_withdrawals_30p_rolling_max",
+          "importance": 216
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_mean",
+          "importance": 208
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_std",
+          "importance": 199
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_min",
+          "importance": 199
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_mean",
+          "importance": 186
+        },
+        {
+          "feature": "daily_withdrawals_7p_rolling_max",
+          "importance": 172
+        },
+        {
+          "feature": "daily_deposits_14p_rolling_max",
+          "importance": 172
+        },
+        {
+          "feature": "daily_deposits_30p_rolling_min",
+          "importance": 165
+        },
+        {
+          "feature": "daily_withdrawals_14p_rolling_max",
+          "importance": 143
+        },
+        {
+          "feature": "dayofweek_cos",
+          "importance": 136
+        },
+        {
+          "feature": "weekofyear",
+          "importance": 135
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 135
+        },
+        {
+          "feature": "month_sin",
+          "importance": 122
+        },
+        {
+          "feature": "month_cos",
+          "importance": 119
+        },
+        {
+          "feature": "year",
+          "importance": 113
+        },
+        {
+          "feature": "month",
+          "importance": 77
+        },
+        {
+          "feature": "is_month_end",
+          "importance": 42
+        },
+        {
+          "feature": "is_month_start",
+          "importance": 1
+        },
+        {
+          "feature": "quarter",
+          "importance": 1
+        },
+        {
+          "feature": "is_quarter_start",
+          "importance": 0
+        },
+        {
+          "feature": "is_quarter_end",
+          "importance": 0
+        }
+      ]
+    }
+  }
+}

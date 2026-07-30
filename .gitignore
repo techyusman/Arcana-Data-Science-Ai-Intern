@@ -1,7 +1,7 @@
 Book & Data set/Data set/
 Bank DataSet/*xlsx 
 Certifications/*/ 
-Bank Project/Bank_Branch_Cash_Forecasting_EDA_Insights_Report.docx
+Bank_Project/Bank_Branch_Cash_Forecasting_EDA_Insights_Report.docx
 *.csv
-Bank Project/eda_plots/*
+Bank_Project/eda_plots/*.png
 /*.docx
