@@ -120,7 +120,7 @@ def load_and_validate_input(file_path: str) -> pd.DataFrame:
     print(f"✓ Required columns present: {required_cols}")
 
     # --- 1.3 Convert data types ---
-    df['start_date'] = pd.to_datetime(df['start_date'], errors='coerce')
+    df['start_date'] = pd.to_datetime(df['start_date'], format='mixed', dayfirst=True, errors='coerce')
     df['txn_hour'] = pd.to_numeric(df['txn_hour'], errors='coerce')
     df['tran_br_code'] = df['tran_br_code'].astype(int)
     df['TOTAL_DR'] = pd.to_numeric(df['TOTAL_DR'], errors='coerce')
@@ -154,7 +154,7 @@ def load_and_validate_input(file_path: str) -> pd.DataFrame:
 
 def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Aggregate hourly transaction data to half-daily level per branch (AM/PM).
+    Aggregate hourly transaction data to daily level per branch.
 
     Aggregations:
         - TOTAL_DR → sum → daily_withdrawals
@@ -188,7 +188,7 @@ def aggregate_to_daily(df: pd.DataFrame) -> pd.DataFrame:
 
     daily = daily.sort_values(['tran_br_code', 'start_date']).reset_index(drop=True)
 
-    print(f"✓ Aggregated to half-daily level")
+    print(f"✓ Aggregated to daily level")
     print(f"  Shape: {daily.shape[0]} rows × {daily.shape[1]} columns")
     print(f"  Unique branches: {daily['tran_br_code'].nunique()}")
     print(f"  Unique dates: {daily['start_date'].nunique()}")
@@ -1098,11 +1098,11 @@ def analyze_branch_coverage(grid_df: pd.DataFrame) -> pd.DataFrame:
         br_data = grid_df[grid_df['tran_br_code'] == br]
         observed = br_data['daily_withdrawals'].notna().sum()
         missing = br_data['daily_withdrawals'].isna().sum()
-        coverage_pct = observed / (total_dates * 2) * 100
+        coverage_pct = observed / total_dates * 100
 
         coverage_records.append({
             'tran_br_code': br,
-            'total_expected_periods': total_dates * 2,
+            'total_expected_periods': total_dates,
             'observed_periods': observed,
             'missing_periods': missing,
             'coverage_pct': round(coverage_pct, 2),
@@ -1113,7 +1113,7 @@ def analyze_branch_coverage(grid_df: pd.DataFrame) -> pd.DataFrame:
     coverage_df = pd.DataFrame(coverage_records)
     coverage_df = coverage_df.sort_values('tran_br_code').reset_index(drop=True)
 
-    print(f"  Branch coverage across {total_dates * 2} periods ({total_dates} days):")
+    print(f"  Branch coverage across {total_dates} periods ({total_dates} days):")
     print(f"  {'Branch':<10} {'Expected':<10} {'Observed':<10} {'Missing':<10} {'Coverage':<10}")
     print(f"  {'-'*50}")
     for _, row in coverage_df.iterrows():

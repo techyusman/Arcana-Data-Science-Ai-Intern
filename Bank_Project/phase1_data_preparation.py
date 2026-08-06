@@ -201,7 +201,7 @@ def clean_datetime_columns(df):
     for col in df.columns:
         if any(keyword in col.lower() for keyword in date_keywords):
             try:
-                df[col] = pd.to_datetime(df[col])
+                df[col] = pd.to_datetime(df[col], format='mixed', dayfirst=True)
                 converted.append(col)
                 print(f"✓ Converted '{col}' to datetime")
             except Exception:
@@ -214,9 +214,9 @@ def clean_datetime_columns(df):
             if df[col].dtype == 'object':
                 try:
                     sample = df[col].dropna().head(5)
-                    test = pd.to_datetime(sample, errors='coerce')
+                    test = pd.to_datetime(sample, format='mixed', dayfirst=True, errors='coerce')
                     if test.notna().sum() > 3:
-                        df[col] = pd.to_datetime(df[col], errors='coerce')
+                        df[col] = pd.to_datetime(df[col], format='mixed', dayfirst=True, errors='coerce')
                         converted.append(col)
                         print(f"✓ Converted '{col}' to datetime")
                 except Exception:

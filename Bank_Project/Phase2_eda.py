@@ -58,7 +58,7 @@ def load_data(file_path):
     print("=" * 70)
 
     df = pd.read_csv(file_path)
-    df['start_date'] = pd.to_datetime(df['start_date'])
+    df['start_date'] = pd.to_datetime(df['start_date'], format='mixed', dayfirst=True)
 
     print(f"[OK] Loaded {df.shape[0]:,} rows x {df.shape[1]} columns")
     print(f"  Date Range: {df['start_date'].min().date()} to {df['start_date'].max().date()}")
@@ -96,7 +96,7 @@ def perform_daily_merge(df):
     daily_df['net_cash'] = daily_df['daily_deposits'] - daily_df['daily_withdrawals']
 
     # Convert date back to datetime
-    daily_df['date'] = pd.to_datetime(daily_df['date'])
+    daily_df['date'] = pd.to_datetime(daily_df['date'], format='mixed', dayfirst=True)
 
     # Sort by date
     daily_df = daily_df.sort_values('date').reset_index(drop=True)
@@ -435,7 +435,7 @@ def plot_11_branch_hour_heatmap(df):
 # TS4: WEEKLY SEASONAL PATTERN (from Time Series EDA)
 # =============================================================================
 
-def plot_ts4_weekly_seasonal_pattern(daily_df):
+def plot_ts4(daily_df):
     """
     Time Series Plot 4: Weekly Seasonal Pattern
     Shows average daily patterns by day of week.
@@ -512,7 +512,7 @@ def plot_ts4_weekly_seasonal_pattern(daily_df):
 # TS5: MONTHLY TREND ANALYSIS (from Time Series EDA)
 # =============================================================================
 
-def plot_ts5_monthly_trend_analysis(daily_df):
+def plot_ts5(daily_df):
     """
     Time Series Plot 5: Monthly Trend Analysis
     Shows monthly aggregated trends over time.
@@ -571,7 +571,7 @@ def plot_ts5_monthly_trend_analysis(daily_df):
 # TS6: CUMULATIVE CASH FLOW (from Time Series EDA)
 # =============================================================================
 
-def plot_ts6_cumulative_cash_flow(daily_df):
+def plot_ts6(daily_df):
     """
     Time Series Plot 6: Cumulative Cash Flow
     Shows cumulative withdrawals and deposits over time.
@@ -619,7 +619,7 @@ def plot_ts6_cumulative_cash_flow(daily_df):
 # TS7: WEEKEND VS WEEKDAY (from Time Series EDA)
 # =============================================================================
 
-def plot_ts7_weekend_vs_weekday(daily_df):
+def plot_ts7(daily_df):
     """
     Time Series Plot 7: Weekend vs Weekday Analysis
     Compares transaction patterns between weekends and weekdays.
@@ -687,7 +687,7 @@ def plot_ts7_weekend_vs_weekday(daily_df):
 # TS8: DAILY DISTRIBUTION ANALYSIS (from Time Series EDA)
 # =============================================================================
 
-def plot_ts8_daily_distribution_analysis(daily_df):
+def plot_ts8(daily_df):
     """
     Time Series Plot 8: Daily Distribution Analysis
     Histograms and KDE plots for daily aggregated values.
@@ -784,11 +784,11 @@ def main():
     plot_11_branch_hour_heatmap(df)
 
     # Time Series plots (daily aggregated data)
-    plot_ts4_weekly_seasonal_pattern(daily_df)
-    plot_ts5_monthly_trend_analysis(daily_df)
-    plot_ts6_cumulative_cash_flow(daily_df)
-    plot_ts7_weekend_vs_weekday(daily_df)
-    plot_ts8_daily_distribution_analysis(daily_df)
+    plot_ts4(daily_df)
+    plot_ts5(daily_df)
+    plot_ts6(daily_df)
+    plot_ts7(daily_df)
+    plot_ts8(daily_df)
 
     print("\n" + "=" * 70)
     print("         COMBINED EDA COMPLETED!")
