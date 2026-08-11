@@ -1,48 +1,48 @@
 {
   "daily_withdrawals": {
     "prev_period_baseline": {
-      "mae": 14501036.0,
-      "rmse": 18430382.56,
-      "wape": 0.3787,
-      "underforecasting_rate": 0.4685,
-      "num_comparisons": 286
+      "mae": 13176191.7,
+      "rmse": 17371969.72,
+      "wape": 0.3928,
+      "underforecasting_rate": 0.4083,
+      "num_comparisons": 1080
     },
     "prev_week_baseline": {
-      "mae": null,
-      "rmse": null,
-      "wape": null,
-      "underforecasting_rate": null,
-      "note": "No valid pairs"
+      "mae": 12627683.77,
+      "rmse": 16911489.13,
+      "wape": 0.3463,
+      "underforecasting_rate": 0.4937,
+      "num_comparisons": 1262
     },
     "roll7_avg_baseline": {
-      "mae": 11321906.29,
-      "rmse": 14993000.57,
-      "wape": 0.3015,
-      "underforecasting_rate": 0.4253,
-      "num_comparisons": 442
+      "mae": 10746429.66,
+      "rmse": 14311564.94,
+      "wape": 0.3009,
+      "underforecasting_rate": 0.4884,
+      "num_comparisons": 1378
     }
   },
   "daily_deposits": {
     "prev_period_baseline": {
-      "mae": 14972994.09,
-      "rmse": 18811277.92,
-      "wape": 0.4078,
-      "underforecasting_rate": 0.451,
-      "num_comparisons": 286
+      "mae": 12647949.35,
+      "rmse": 16334424.48,
+      "wape": 0.3884,
+      "underforecasting_rate": 0.4074,
+      "num_comparisons": 1080
     },
     "prev_week_baseline": {
-      "mae": null,
-      "rmse": null,
-      "wape": null,
-      "underforecasting_rate": null,
-      "note": "No valid pairs"
+      "mae": 11716700.62,
+      "rmse": 15241420.68,
+      "wape": 0.3258,
+      "underforecasting_rate": 0.4881,
+      "num_comparisons": 1262
     },
     "roll7_avg_baseline": {
-      "mae": 10817085.41,
-      "rmse": 14398371.85,
-      "wape": 0.295,
-      "underforecasting_rate": 0.4299,
-      "num_comparisons": 442
+      "mae": 10387471.32,
+      "rmse": 13501752.87,
+      "wape": 0.2958,
+      "underforecasting_rate": 0.4949,
+      "num_comparisons": 1378
     }
   }
 }
