@@ -5,3 +5,9 @@ Bank_Project/Bank_Branch_Cash_Forecasting_EDA_Insights_Report.docx
 *.csv
 Bank_Project/eda_plots/*.png
 /*.docx
+.env
+**/.env
+Week 8/data/*.db
+Week 8/tests/.tmp/
+Week 8/tests/test_vectors.db
+**/__pycache__/

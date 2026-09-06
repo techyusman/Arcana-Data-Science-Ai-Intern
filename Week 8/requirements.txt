@@ -1,0 +1,4 @@
+groq==1.6.0
+python-dotenv==1.2.1
+pypdfium2==4.30.0
+
