@@ -1,0 +1,34 @@
+[
+  {
+    "question": "What is the deliverable for Week 5?",
+    "expected_source": "phase2_machine_learning.md"
+  },
+  {
+    "question": "Which vector databases are mentioned for Week 8?",
+    "expected_source": "phase3_genai_rag.md"
+  },
+  {
+    "question": "What topics are covered in Week 3?",
+    "expected_source": "phase1_foundations.md"
+  },
+  {
+    "question": "What is the deliverable for Week 9?",
+    "expected_source": "phase3_genai_rag.md"
+  },
+  {
+    "question": "What must interns complete in Week 10 besides the presentation?",
+    "expected_source": "phase4_evaluation.md"
+  },
+  {
+    "question": "Why was the Week 1 secure coding add-on introduced?",
+    "expected_source": "phase1_foundations.md"
+  },
+  {
+    "question": "Name a course listed under the mandatory learning material for transformers.",
+    "expected_source": "learning_resources.md"
+  },
+  {
+    "question": "What is the monthly stipend paid to interns?",
+    "expected_source": null
+  }
+]
